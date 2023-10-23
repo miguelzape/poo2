@@ -1,0 +1,200 @@
+
+		          ECLIPSE IDE
+
+
+Importar un proyecto:
+	file\import. Luego general\existing proyect intro workspare  --> next
+	en select root directory pulsar browse y seleccionar carpeta
+
+Cambiar al modo 'dark'
+	Window\Prefences. Luego General\Appearance. Seleccionar Theme Dark
+
+Cambiar a perspectiva de Java
+	Window\Perspective\Open Perspective\Others\Java
+
+Restaurar Eclipse al punto de instalacion.
+	Con eclipse cerrado, ir a la carpeta de WorkSpace activa y borrar la carpeta '.metadata'	
+	Despues hay que hacer "Cambiar al modo dark" y "Cambiar a perspectiva de Java".
+	
+Abrir la carpeta donde esta el proyecto actual:
+	boton derecho sobre el espacio de trabajo  Show In/System explorer
+
+Alinear el codigo:
+	boton derecho sobre el espacio de trabajo  Source/Format. Tambien funciona con CTRL + SHITH + F
+
+CTRL + SHITH + O:
+	Añade los 'import' de cualquier objeto de las librerias de Java utilizado en el código
+
+CTRL + SHITH + C:
+	marca como comentario todas las lineas seleccionadas
+
+CTRL + SHITH + T
+	Busca dentro de nuestras librerias y proyectos   (NO ME FUNCIONA)
+
+Binario y hexadecimal
+	int kk = 0b1010_1010_0011;   //binario
+	int kk = 0b101010100011;     //binario	
+	int kk2 = 0xab123;tOrO$77#q;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  //hexadecimal
+
+Configurar y/o usar un repositorio de github:
+
+	boton derecho sobre el proyecto --> team ->share proyect
+	marcar 'use or create repository in parent folder of prohect'
+	? --> esta en la fase de workspace
+	
+	luego
+	boton derecho sobre el proyecto --> team ->add to index
+	* --> esta en la fase de staging
+
+	luego
+	boton derecho sobre el proyecto --> team ->commit
+	cilindro --> esta en la fase de repositorio local
+
+Generar automaticamente todos los gets y sets:
+	Raton. boton derecho. source. generate gettes and settes
+
+
+ 
+
+
+			 JAVA
+
+
+convertir cadena de texto a numero
+	int num = Integer.parseInt("123");
+
+https://github.com/miguelzape/POO.git
+
+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
+
+https://github.com/joselllorente/cursogetafe.git
+
+ssh -p 2222 ubuntu@localhost
+
+	Modificadores:
+	public -->	Permite el acceso desde cualquier otra clase
+	private -->	Solo se puede acceder desde la clase donde esta declarada/definida
+	package -->	Es el tipo por defecto, no requiere ninguna palabra clave. Solo la propia clase
+			y las clases del mismo paquete tienen acceso al metodo
+	protected -->	tiene el mismo acceso que package, y ademas sus clases hijas tambien tienen acceso
+			aunque esten en otros packages.
+
+	comentarios    // 				comentario de linea
+		       /*                   */		comentario de bloque
+		       /**		    */		comentario javadoc. Se muestra al usar la funcion
+
+
+
+
+FRAMEWORK IBERNATE
+
+	ayuda a hacer programas que trabajan con base de datos
+
+¿que son los  VarArgs? (Argumentos de numero variable)
+
+	public static void metodo1(int num, String... nombres);
+
+	Al poner un parametro de entrada con 3 puntos significa que puede recibir 0,1 o varios argumentos de este tipo. Solo puede ser VarArgs el ultimo de los argumentos (el int num no podria)
+	Dentro de la funcion se recibe como un array, pero los parametros se le pasan como datos independientes separados por comas
+
+
+			LINUX
+
+para instalar las guest addition de virtualbox en linux
+sudo mount /dev/cdrom /mnt  → monta la unidad virtual de cdron en la ruta /mnt
+cd /mnt			→ cambiar a mnt, que es donde estará la imagen
+sudo ./VBoxLinuxAdditions.run   → esto las instala
+
+para no tener que escribir la clave cada vez que me conecto a un servidor ssh, hacer esto en el equipo desde el que se realiza la conexión
+	ssh-keygen  →  genera un par de claves publica/privada
+
+	ahora hay que copiar la clave publica en el equipo al que queremos acceder. Se puede hacer de dos maneras: con scp o con ssh-copy-id
+	a)
+		scp /home/usuario/.ssh/id_rsa.pub SERVER:/home/usuario
+cat /home/usuario/id_rsa.pub>>/home/usuario/.ssh/authorized_keys
+b)
+	ssh-copy-id -i /path/to/key.pub SERVERNAME
+
+	ejemplo ‘ssh-copy-id -i /root/.ssh/id.rsa 192.168.1.160’
+
+después se reinicia el servicio ssh con este comando
+systemctl restart sshd.service
+
+
+cd <ruta>	→	cambiar al directorio de la ruta
+cd		→	sin parámetros. Cambia al directorio del usuario (\home\<usuario>)
+pwd		→	pad working directory
+ls		→	listar contenido del directorio
+ls -l		→	listado detallado
+   -lt		-->	destallado y ordenado por fecha (descendente)
+   -ltr		-->	destallado y ordenado por fecha (ascendente) (lo mas reciente al final)
+   -S		-->     ordenador por tamaño
+   -q		-->     por nombre (ficheros y directorios). si no se pone q, primero directorios y luego ficheros
+   -h          -->	da el tamaño en k,M,G....
+   -a		-->     muetra los ficheros ocultos
+ls -la		→ 	listado detallado incluyendo ficheros y carpetas ocultas
+head		-->     muestra primeras lineas de un fichero. head -n20 pepe.txt primeras 20 lineas de pepe.txt
+tail		-->     muestra ultimas lineas de un ficheros. tail -30f pepe.txt ultimas 30 linas de pepe.txt
+who		→	muestra que usuario esta logado (suele verse en el promt)
+whereis <fichero>  → dice la ruta de ficheros (creo que solo del sistema)
+more		→	visualiza un fichero paginandolo
+cat		→ 	concatena ficheros, pero se usa para muchas cosas.
+			cat fichero	visualiza el fichero
+			cat > fichero    crea fichero
+touch		→	cambia fecha de creación de un fichero
+chmod 	        →	cambia los permisos de un fichero
+			con +x se hace ejecutable para todo el mundo
+			con -w hacer que no lo puede modificar nadie
+			con 755 : rwx r_x r_x
+chown	<usuario> <fichero>	-->     cambia propietario de un fichero
+chown   <usuario>:<grupo> <fichero> --> cambia el propietario y el grupo
+chgrp   <grupo> <fichero>  -->	cambia el grupo al que pertenece
+man <comando>	muestra el manual de usuario de este comando
+date		→	muestra la fecha y hora
+uname -a	→	muestra información del sistema operativo
+cp <origen><destino>      copia un archivo	
+scp <origen><destino>      copia un archivo de forma segura entre equipos
+			ejemplo:	scp -P 2222 libro1.txt ubuntu@localhost:/home/ubuntu/books
+sh <fichero>	→	Ejecuta el contenido de un fichero sin necesidad de que sea un 
+ejecutable (??x??x??x). Un script de shell, por ejemplo
+mkdir		-->	crear una carpeta.
+rm		→ 	remove. Borra ficheros
+rm -r		-->	remove. Borra directorio y su contenido.
+mv		-->	mueve o renombra un fichero.
+tar		→	utilidad para comprimir y descomprimir
+tar -xzf <archivo> → esto descomprime archivo
+hostname -I	→	muestra la dirección IP 	
+ssh-keygen	→	crea un par de ficheros de claves pública + privada
+ssh-copy-id   curso@10.0.2.10  → pasa la clave publica a 10.0.2.10 para poder abrir 
+conexión sin que pida la password
+&		→	estricto al final de un ejecutable, hace que funcione en segundo plano
+$		→	escrito antes de algo, lo interpreta como una variable
+			echo $USER, muestra el nombre del usuario, igual que who
+			echo $SSH_CONNECTION, muestra la ip de anfitrión y cliente y el 
+puerto usado en la conexión ssh
+			echo $PATH, muestra el valor de la variable PATH
+find		→ 	busca archivos en una carpeta
+which		→	similar a find, pero solo busca en las rutas de la variable PATH
+env		→	muestra las variables de entorno
+alias		→	comprobar los alias existentes.
+alias a=’b’	→	crea el alias ‘a’ que hace lo mismo que ‘b’
+ncat		→	abre puertos
+id		→	muestra todos los grupos a los que pertenece el usuario actual, o el 
+adduser <nombre> -->	crea un nuevo usuario llamado nombre
+addgroup <nombre> -->   crea un nuebo grupo
+deluser <nombre> -->	borrar el usuario llamado nombre
+su <miguel>     -->     cambiar a otro usuario
+
+vim y nano	-->	Editores de texto. Para salir de          vim:  ESCAPE :q!
+					   para grabar y salir de vim:	ESCAPE :wq!
+que se pregunte después de id
+systemctl status <servicio>   → comprueba el estado de un servicio
+curl <url>	→
+usermod -aG docker vagrant  → añade usuario vagrant al grupo docker
+
+
+en la ruta ‘/etc/netplan’ hay un fichero llamado ‘00-installer-config-yaml’ que es donde está la configuración de red. Para configurarla en modo manual (sin dhcp), este es un ejemplo de configuración. hay que respetar las indentaciones.
+
+escribiendo ‘whereis neplan’ nos da las rutas donde hay algo con ese nombre
+
+Existe un programa llamado 'ConEmu' que sirve para sustituir la consola o shell de windows.
