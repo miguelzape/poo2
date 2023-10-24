@@ -12,7 +12,7 @@ public class Persona {
 	public Persona() {
 		String nombres[] = { "Paco", "Juan", "Alicia", "Manolo", "Roberto", "Sara", "Maria", "Tamara", "Luis", "Tomas",
 				"Lola", "Penelope", "Sancho", "Luna", "Angel", "Andres","Antonio","Lorena",
-				 "David","Ana","Pedro","Pablo","Ramiro","Aitana"};
+				 "David","Ana","Pedro","Pablo","Ramiro","Aitana","Nerea"};
 		String[] letras = {"T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"};
 		// 23 letras
 		

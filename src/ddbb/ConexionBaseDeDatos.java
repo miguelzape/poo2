@@ -45,11 +45,10 @@ public class ConexionBaseDeDatos {
 //			e.printStackTrace();
 		}finally {
 			try {
-				connection.close();
-				stmt.close();
-				rs.close();
+				if (connection != null) connection.close();
+				if (stmt != null) stmt.close();
+				if (rs != null) rs.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
