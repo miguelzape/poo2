@@ -42,13 +42,11 @@ public class PrimerAcceso {
 			rs = stmt.executeQuery("SELECT * FROM TB_FACILITIES ORDER BY guid DESC");
 			rsmd = rs.getMetaData();
 			
-			int error=UtilsDB.visualizaDBTabla(rs);
-			
-			if (error>0) System.out.printf("\nError numero %d",error);
+			UtilsDB.visualizaDBTabla(rs);
 			
 			rs = stmt.executeQuery("SELECT * FROM TB_FACILITIES ORDER BY guid DESC");
 			rsmd = rs.getMetaData();
-			
+			System.out.println();
 			
 			while (rs.next()) {
 				long i=rs.getLong("id");
@@ -63,8 +61,6 @@ public class PrimerAcceso {
 				System.out.println(f);
 				
             }		
-			
-			
 			
 			System.out.println("Se han creado " + lista.size() + " objetos");
 			

@@ -274,22 +274,24 @@ public class Utilidades {
 		String[] filas;
 		
 		filas =campos.split("\n");
+		//System.out.printf("\nAl convertir campos a tabla se detectan %d lineas",filas.length);
 		
 		for (int i=0;i < nFilas;i ++) {
-			tabla[i] = filas[i].split("|");
+			//System.out.println("\nConversion camposAtabla" + filas[i]);
+			tabla[i] = filas[i].split(":");
+//			for (String c : filas[i].split(":")){
+//				System.out.println(c);
+//			}
 		}
-		
-		
-		
-		return (visualizaTabla(cabecera, tabla));
 	
+		return (visualizaTabla(cabecera, tabla));
 	}
 	
 	
 	
 
 	public static int visualizaTabla(String[] cabecera, String[][] tabla) {
-		final int ANCHURA_MAXIMA = 80;
+		final int ANCHURA_MAXIMA = 120;
 		int nColCabecera = cabecera.length;
 		int nFilTabla = tabla.length;
 		int nColTabla = tabla[0].length;
@@ -326,8 +328,11 @@ public class Utilidades {
 
 		// si la anchura total a imprimir supera el MAXIMO es un error y se acaba el
 		// proceso
-		if (anchura > ANCHURA_MAXIMA)
+		if (anchura > ANCHURA_MAXIMA) {
+			System.out.println("La anchura de la tabla es " + anchura + ", superando el limite de " + ANCHURA_MAXIMA);
 			return anchura;
+		}
+			
 
 		imprimirLineaSinDatos(anchoColumnas,1);
 		

@@ -60,10 +60,10 @@ private static Connection connection;
 			while (rs.next()){
 			   for (int i=0;i<nCol;i++) {
 				   campo=rs.getString(i+1);
-				   if (campo==null) campo="";
+				   if (campo==null) campo=" ";
 
 				   if (i>0)
-					   campos = campos + "|"+campo;
+					   campos = campos + ":" +campo;
 				   else
 					   campos = campos +campo;
 			   }
