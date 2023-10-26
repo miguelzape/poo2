@@ -65,7 +65,7 @@ convertir cadena de texto a numero
 
 https://github.com/miguelzape/POO.git
 
-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
+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
 
 https://github.com/joselllorente/cursogetafe.git
 
@@ -108,6 +108,9 @@ public class DeclareAnArray {
         int[][] intArr9={ {1,2}, {1,2}, {1,2}, {1,2}, {1,2} };
     }
 }
+
+
+ademas de los bloques Try Catch existe el Try With resources
 
 
 SQL

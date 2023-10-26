@@ -100,7 +100,6 @@ public class CargarDesdeBD {
 			System.out.println(v);
 		}
 
-		//combatientes.toArray()
 		
 		try {
 			Batalla.nuevaBatalla(combatientes.get(0),combatientes.get(1));

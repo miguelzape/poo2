@@ -266,6 +266,27 @@ public class Utilidades {
 		// n=(n*(max-min))+min;
 		return n;
 	}
+	
+	
+	public static int visualizaTabla(String[] cabecera, String campos,int nFilas,int nColumnas) {
+		
+		String[][] tabla = new String[nFilas][nColumnas];
+		String[] filas;
+		
+		filas =campos.split("\n");
+		
+		for (int i=0;i < nFilas;i ++) {
+			tabla[i] = filas[i].split("|");
+		}
+		
+		
+		
+		return (visualizaTabla(cabecera, tabla));
+	
+	}
+	
+	
+	
 
 	public static int visualizaTabla(String[] cabecera, String[][] tabla) {
 		final int ANCHURA_MAXIMA = 80;
@@ -274,10 +295,13 @@ public class Utilidades {
 		int nColTabla = tabla[0].length;
 		// si el numero de columnas de tabla y cabecera no coincide es un error y se
 		// acaba el proceso
-		if (nColCabecera != nColTabla)
+		
+		
+		if (nColCabecera != nColTabla) {
+			System.out.printf("\nnColCabera %d\nnFilTabla %d\nnColTabla %d\n", nColCabecera, nFilTabla, nColTabla);
 			return 1;
-		//System.out.printf("\nnColCabera %d\nnFilTabla %d\nnColTabla %d\n", nColCabecera, nFilTabla, nColTabla);
-
+		}
+		
 		// anchoColumnas guardara la anchura maxima de cada columna.
 		int anchoColumnas[] = new int[nColCabecera];
 		for (int i = 0; i < nFilTabla; i++) {

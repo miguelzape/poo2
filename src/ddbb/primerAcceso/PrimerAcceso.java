@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import utils.UtilsDdBb;
+import utils.UtilsDB;
 
 public class PrimerAcceso {
 	
@@ -42,6 +42,12 @@ public class PrimerAcceso {
 			rs = stmt.executeQuery("SELECT * FROM TB_FACILITIES ORDER BY guid DESC");
 			rsmd = rs.getMetaData();
 			
+			int error=UtilsDB.visualizaDBTabla(rs);
+			
+			if (error>0) System.out.printf("\nError numero %d",error);
+			
+			rs = stmt.executeQuery("SELECT * FROM TB_FACILITIES ORDER BY guid DESC");
+			rsmd = rs.getMetaData();
 			
 			
 			while (rs.next()) {
@@ -58,12 +64,12 @@ public class PrimerAcceso {
 				
             }		
 			
-			UtilsDdBb.visualizaDBTabla(rs);
+			
 			
 			System.out.println("Se han creado " + lista.size() + " objetos");
 			
 			for (Facilities facilities : lista) {
-				System.out.printf("%s, ",facilities.getName());
+				 //Facilities.getName());
 			}
 			
 			
