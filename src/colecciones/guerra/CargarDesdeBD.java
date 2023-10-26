@@ -74,7 +74,7 @@ public class CargarDesdeBD {
 				String dbTipo = rs.getString("tipo");
 				int dbFuerza = rs.getInt("fuerza");
 				int dbResistencia = rs.getInt("resistencia");
-				int dbVehiculo_id = rs.getInt("vehiculo_id");
+				int dbVehiculo_id = rs.getInt("fk_vehiculo_id");
 
 				guerrero = new Guerrero(dbNombre, dbTipo, dbFuerza, dbResistencia);
 

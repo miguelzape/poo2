@@ -43,7 +43,7 @@ private static Connection connection;
 	
 	
 
-	public static int visualizaDBTabla(ResultSet rs) {
+	public static void visualizaDBTabla(ResultSet rs) {
 
 		ResultSetMetaData rsmd = null;
 		String[] nombresColumnas;
@@ -51,7 +51,6 @@ private static Connection connection;
 		String campo="";
 		int nCol=0;
 		int nFil=0;
-		int error=0;
 		
 		try {
 			rsmd = rs.getMetaData();
@@ -80,15 +79,12 @@ private static Connection connection;
 				nombresColumnas[iter] = rsmd.getColumnName(iter+1);
 			}
 			
-			error = Utilidades.visualizaTabla(nombresColumnas, campos ,nFil,nCol);
+			Utilidades.visualizaTabla(nombresColumnas, campos ,nFil,nCol);
 			
 		} catch (Exception e) {
 			System.out.println("error en visualizaTabla " + e.getMessage());
 		}
 		
-		
-		return error;
-
 	}
 
 }

@@ -62,12 +62,6 @@ public class PrimerAcceso {
 				
             }		
 			
-			System.out.println("Se han creado " + lista.size() + " objetos");
-			
-			for (Facilities facilities : lista) {
-				 //Facilities.getName());
-			}
-			
 			
 			System.out.println("\nNombres de las columnas");
 			for (int iter = 1; iter <= rsmd.getColumnCount(); iter++) { 

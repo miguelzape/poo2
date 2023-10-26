@@ -5,11 +5,12 @@ CREATE TABLE TB_GUERREROS (
     tipo          VARCHAR(15),
     fuerza        NUMERIC(2) NOT NULL,
     resistencia   NUMERIC(2) NOT NULL,
-    vehiculo_id   INTEGER NOT NULL,
-    PRIMARY KEY(id)
+    fk_vehiculo_id   INTEGER NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(fk_vehiculo_id)REFERENCES tb_vehiculos_guerra (id)
 );
 
-INSERT INTO TB_GUERREROS (nombre,tipo,fuerza,resistencia,vehiculo_id) VALUES
+INSERT INTO TB_GUERREROS (nombre,tipo,fuerza,resistencia,fk_vehiculo_id) VALUES
 
 ("asesino","humano",9,1,1),
 ("luchador","humano",7,3,1),
@@ -25,7 +26,5 @@ INSERT INTO TB_GUERREROS (nombre,tipo,fuerza,resistencia,vehiculo_id) VALUES
 ("karateka","humano",6,4,2),
 ("pulpo","cefalopodo",2,8,2),
 ("perro","canino",5,5,2);
-
-
 
 SELECT * FROM TB_GUERREROS ORDER BY id;
