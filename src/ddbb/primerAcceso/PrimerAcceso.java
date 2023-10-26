@@ -58,7 +58,7 @@ public class PrimerAcceso {
 				
             }		
 			
-			//UtilsDdBb.visualizaDBTabla(rs);
+			UtilsDdBb.visualizaDBTabla(rs);
 			
 			System.out.println("Se han creado " + lista.size() + " objetos");
 			

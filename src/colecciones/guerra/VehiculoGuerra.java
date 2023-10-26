@@ -73,6 +73,10 @@ public abstract class VehiculoGuerra implements Tripulable {
 	}
 	
 	
+	
+	public abstract int numeroPasajeros();
+	
+	
 	/**
 	 * Informa de si el vehiculo esta lleno (CAPACIDAD_MAXIMA tripulantes)
 	 * @return
@@ -100,8 +104,8 @@ public abstract class VehiculoGuerra implements Tripulable {
 	}
 	
 	
-	void recibirDanio(double puntosVida) {
-		this.puntosVida -= puntosVida;
+	void recibirDanio(double puntosDanio) {
+		this.puntosVida -= puntosDanio;
 	}
 
 

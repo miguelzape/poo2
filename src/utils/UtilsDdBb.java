@@ -17,7 +17,8 @@ public class UtilsDdBb {
 			rsmd = rs.getMetaData();
 			nCol=rsmd.getColumnCount();
 			
-			rs.first();
+	
+			// me falta saber el numero de filas
 			while (rs.next()){
 			   nFil++;
 			}

@@ -35,18 +35,31 @@ public class Acorazado extends VehiculoGuerra {
 		SecureRandom r=new SecureRandom();	
 		double sumaResistencias=0.0;
 		double defensa;
-		//double danio;
+		double danio;
 		
 		for (Guerrero g : this.getPasaje()) {
 			sumaResistencias += g.getResistencia();
 		}
 		defensa = (this.getDefensa()*r.nextDouble(0,1) + sumaResistencias*r.nextDouble(0,0.5));
-		//danio = (ataque > defensa) ? ataque-defensa : 0;
+		danio = (ataque > defensa) ? ataque-defensa : 0;
 		//this.recibirDanio(danio); 
 		
 		//System.out.println(this.getNombre() + " se defiende con " + danio);
-		return defensa;
+		return danio;
 	}
+	
+	@Override
+	public int numeroPasajeros() {
+		return (this.getPasaje().size());
+	}
+
+	@Override
+	public String toString() {
+		return "Nombre=" + getNombre() + ", numero Pasajeros=" + numeroPasajeros() +  ", Ataque="
+				+ getAtaque() + ", Defensa=" + getDefensa();
+	}
+
+	
 	
 	
 	

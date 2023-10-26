@@ -3,16 +3,19 @@ package colecciones.guerra;
 import java.security.SecureRandom;
 
 public class Batalla {
-
-	private void comienzaBatalla(VehiculoGuerra invitado) throws Exception{
+	
+	
+	private void comienzaBatalla(VehiculoGuerra local, VehiculoGuerra invitado) throws Exception{
 
 
 			VehiculoGuerra[] combatientes = new VehiculoGuerra[2];
-			combatientes[0] = new Acorazado("Ticonderoga", 3, 7,10);
 			
-			double puntosAtaque;
-			double puntosResitencia;
-
+			if(local == null)
+				combatientes[0] = new Acorazado("Ticonderoga", 3, 7,10);
+			else 
+				combatientes[0]=(VehiculoGuerra) local;
+			
+		
 			if (invitado != null)
 				combatientes[1] = (VehiculoGuerra) invitado;
 			else {
@@ -42,20 +45,18 @@ public class Batalla {
 
 	}
 
-	private void lucha(VehiculoGuerra[] combatientes, int a, int b) {
+	public void lucha(VehiculoGuerra[] combatientes, int a, int b) {
 		double puntosAtaque;
-		double puntosResitencia;
-		double danio;
+		double puntosDanio;
 
 		puntosAtaque = combatientes[a].atacar();
-		puntosResitencia = combatientes[b].defender(puntosAtaque);
+		puntosDanio = combatientes[b].defender(puntosAtaque);
 		
-		danio= puntosAtaque - puntosResitencia;
-		if (danio<0) danio=0;
 		
-		combatientes[b].recibirDanio(danio);
-		System.out.printf("%s ataca con %.2f y %s se defiende con %.2f", combatientes[a].getNombre(), puntosAtaque,
-				combatientes[b].getNombre(), puntosResitencia);
+	
+		combatientes[b].recibirDanio(puntosDanio);
+		System.out.printf("%s ataca con %.2f y %s recibe %.2f daños", combatientes[a].getNombre(), puntosAtaque,
+				combatientes[b].getNombre(), puntosDanio);
 
 		// aqui hago que el indice a siempre sea el menor de los dos
 		// para que esta linea se imprima siempre en el mismo orden
@@ -76,7 +77,30 @@ public class Batalla {
 	 */
 	public static void nuevoVehiculo(VehiculoGuerra invitado) throws Exception{
 		Batalla batalla = new Batalla();
-		batalla.comienzaBatalla(invitado);
+		batalla.comienzaBatalla(null, invitado);
+	}
+	
+	
+	/**
+	 * Crea una batalla a la que hay que facilitar dos VehiculoGuerra que puede contener
+	 * un maximo de CAPACIDAD_MAXIMA tripulantes
+	 * @param local Es el VehiculoGuerra que participa en la batalla
+	 * @param invitado Es el VehiculoGuerra que participa en la batalla
+	 */
+	public static void nuevaBatalla(VehiculoGuerra local, VehiculoGuerra invitado) throws Exception{
+		Batalla batalla = new Batalla();
+		batalla.comienzaBatalla(local, invitado);
+	}
+	
+	/**
+	 * Crea una batalla a la que hay que facilitar dos VehiculoGuerra que puede contener
+	 * un maximo de CAPACIDAD_MAXIMA tripulantes
+	 * @param local Es el VehiculoGuerra que participa en la batalla
+	 * @param invitado Es el VehiculoGuerra que participa en la batalla
+	 */
+	public static void nuevaBatalla(VehiculoGuerra... vehiculos) throws Exception{
+		Batalla batalla = new Batalla();
+		batalla.comienzaBatalla(vehiculos[0], vehiculos[1]);
 	}
 
 }
