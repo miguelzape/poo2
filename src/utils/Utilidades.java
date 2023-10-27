@@ -10,6 +10,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Utilidades {
+	
+	// anchura maxima para imprimir en pantalla tablas de datos
+	static final int ANCHURA_MAXIMA = 120;
 
 	/**
 	 * muestra en pantalla la cadena de entrada y pide por teclado una cadena de
@@ -268,30 +271,59 @@ public class Utilidades {
 	}
 	
 	
-	public static int visualizaTabla(String[] cabecera, String campos,int nFilas,int nColumnas) {
+	// Modificar esta funcion para que trabaje con los arrays de String segun
+	// se van haciendo los Split, y no como ahora que se guarda en un array de 
+	// 2 dimensiones de String y luego se recoge desde alli
+	static int visualizaTabla(String[] cabecera, String campos,int[] anchoColumnas,int nFilas) {
 		
+		int nColumnas = anchoColumnas.length;
 		String[][] tabla = new String[nFilas][nColumnas];
 		String[] filas;
 		
 		filas =campos.split("\n");
-		//System.out.printf("\nAl convertir campos a tabla se detectan %d lineas",filas.length);
 		
 		for (int i=0;i < nFilas;i ++) {
-			//System.out.println("\nConversion camposAtabla" + filas[i]);
 			tabla[i] = filas[i].split(":");
-//			for (String c : filas[i].split(":")){
-//				System.out.println(c);
-//			}
 		}
 	
-		return (visualizaTabla(cabecera, tabla));
+		// si la anchura total a imprimir supera el MAXIMO es un error y se acaba el
+		// proceso
+		int anchura = nColumnas + 1;
+		for (int i : anchoColumnas) anchura += i;
+		if (anchura > ANCHURA_MAXIMA) {
+			System.out.println("La anchura de la tabla es " + anchura + ", superando el limite de " + ANCHURA_MAXIMA);
+			return anchura;
+		}
+			
+
+		imprimirLineaSinDatos(anchoColumnas,1);
+		
+		// si es true. Imprime cabecera ancha
+		// si es false. Imprime cabecera estrecha
+		if (true) {
+			imprimirLineaDatos(anchoColumnas, cabecera, Color.WHITE_BOLD);
+			imprimirLineaSinDatos(anchoColumnas,3);
+		}
+		else imprimirLineaDatos(anchoColumnas, cabecera, Color.WHITE_UNDERLINED);
+		
+
+		int h = 0;
+		Color color;
+		for (String[] fila : tabla) {
+			color= (h % 2)==0 ? Color.YELLOW : Color.WHITE;
+			imprimirLineaDatos(anchoColumnas, fila, color);
+			h++;
+		}
+
+		imprimirLineaSinDatos(anchoColumnas,100);
+		return 0;
 	}
 	
 	
 	
 
 	public static int visualizaTabla(String[] cabecera, String[][] tabla) {
-		final int ANCHURA_MAXIMA = 120;
+		
 		int nColCabecera = cabecera.length;
 		int nFilTabla = tabla.length;
 		int nColTabla = tabla[0].length;
@@ -318,7 +350,6 @@ public class Utilidades {
 			}
 		}
 
-		// System.out.println("El tamaño maximo de las columnas es: ");
 		int anchura = 0;
 		for (int i : anchoColumnas) {
 			// System.out.println(i);

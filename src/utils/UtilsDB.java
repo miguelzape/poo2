@@ -51,35 +51,52 @@ private static Connection connection;
 		String campo="";
 		int nCol=0;
 		int nFil=0;
+		int anchoColumnas[];
 		
 		try {
 			rsmd = rs.getMetaData();
-			nCol=rsmd.getColumnCount();
+			nCol = rsmd.getColumnCount();
 			
+			anchoColumnas = new int[nCol];
+			
+			// guardar numero de columnas y el nombre de cada una de ellas
+			nombresColumnas = new String[nCol];
+			for (int iter = 0; iter < nCol; iter++) {
+				nombresColumnas[iter] = rsmd.getColumnName(iter+1);
+			}
+			
+			// este bucle crea una cadena 'campos' con todo el contenido de la base
+			// de datos con cada campo separado por ':' y cada linea separaad por '\n'
+			int i=0;
 			while (rs.next()){
-			   for (int i=0;i<nCol;i++) {
-				   campo=rs.getString(i+1);
+			   for (int j=0;j<nCol;j++) {
+				   campo=rs.getString(j+1);
 				   if (campo==null) campo=" ";
 
-				   if (i>0)
+				   if (j>0)
 					   campos = campos + ":" +campo;
 				   else
 					   campos = campos +campo;
+				   
+				   if (i == 0) {
+						anchoColumnas[j] = nombresColumnas[j].length();
+					}
+
+					if (campo.length() > anchoColumnas[j]) {
+						anchoColumnas[j] = campo.length();
+					}   
 			   }
 			   campos = campos + "\n";
 			   nFil++;
+			   i++;
 			}
 			
 			//System.out.println("La tabla tiene " + nFil +" filas y " + nCol + " columnas");
 			//System.out.println(campos);
 			
-			nombresColumnas = new String[nCol];
-
-			for (int iter = 0; iter < nCol; iter++) {
-				nombresColumnas[iter] = rsmd.getColumnName(iter+1);
-			}
 			
-			Utilidades.visualizaTabla(nombresColumnas, campos ,nFil,nCol);
+			
+			Utilidades.visualizaTabla(nombresColumnas, campos , anchoColumnas, nFil);
 			
 		} catch (Exception e) {
 			System.out.println("error en visualizaTabla " + e.getMessage());

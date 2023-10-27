@@ -65,11 +65,20 @@ convertir cadena de texto a numero
 
 https://github.com/miguelzape/POO.git
 
-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
+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
 
 https://github.com/joselllorente/cursogetafe.git
 
 https://github.com/miguelzape/examen1.git
+
+conexon a mongoDB
+
+mongodb://localhost:27017
+
+conexion: mongo
+base de datos: tutorial
+coleccion: firstCollection
+
 
 
 ssh -p 2222 ubuntu@localhost
