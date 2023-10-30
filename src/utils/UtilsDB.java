@@ -90,13 +90,9 @@ private static Connection connection;
 			   nFil++;
 			   i++;
 			}
+					
 			
-			//System.out.println("La tabla tiene " + nFil +" filas y " + nCol + " columnas");
-			//System.out.println(campos);
-			
-			
-			
-			Utilidades.visualizaTabla(nombresColumnas, campos , anchoColumnas, nFil);
+			Utilidades.visualizaTabla(nombresColumnas, campos , anchoColumnas);
 			
 		} catch (Exception e) {
 			System.out.println("error en visualizaTabla " + e.getMessage());

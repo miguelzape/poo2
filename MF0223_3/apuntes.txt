@@ -65,7 +65,7 @@ convertir cadena de texto a numero
 
 https://github.com/miguelzape/POO.git
 
-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
+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
 
 https://github.com/joselllorente/cursogetafe.git
 
@@ -75,6 +75,8 @@ conexon a mongoDB
 
 mongodb://localhost:27017
 
+user=curso
+password=password
 conexion: mongo
 base de datos: tutorial
 coleccion: firstCollection

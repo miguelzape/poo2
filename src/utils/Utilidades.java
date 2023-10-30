@@ -1,10 +1,5 @@
 package utils;
 
-/*   https://github.com/joselllorente/cursogetafe.git
-
-	 https://github.com/miguelzape/examen1.git
-
-	 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   */
 
 import java.util.Random;
 import java.util.Scanner;
@@ -271,31 +266,27 @@ public class Utilidades {
 	}
 	
 	
-	// Modificar esta funcion para que trabaje con los arrays de String segun
-	// se van haciendo los Split, y no como ahora que se guarda en un array de 
-	// 2 dimensiones de String y luego se recoge desde alli
-	static int visualizaTabla(String[] cabecera, String campos,int[] anchoColumnas,int nFilas) {
+	/**
+	 * 
+	 * @param cabecera
+	 * @param campos
+	 * @param anchoColumnas
+	 * @return
+	 */
+	static int visualizaTabla(String[] cabecera, String campos,int[] anchoColumnas) {
 		
-		int nColumnas = anchoColumnas.length;
-		String[][] tabla = new String[nFilas][nColumnas];
 		String[] filas;
+		int nColumnas = anchoColumnas.length;
 		
-		filas =campos.split("\n");
-		
-		for (int i=0;i < nFilas;i ++) {
-			tabla[i] = filas[i].split(":");
-		}
-	
 		// si la anchura total a imprimir supera el MAXIMO es un error y se acaba el
-		// proceso
+		// proceso.
 		int anchura = nColumnas + 1;
 		for (int i : anchoColumnas) anchura += i;
 		if (anchura > ANCHURA_MAXIMA) {
 			System.out.println("La anchura de la tabla es " + anchura + ", superando el limite de " + ANCHURA_MAXIMA);
 			return anchura;
 		}
-			
-
+		
 		imprimirLineaSinDatos(anchoColumnas,1);
 		
 		// si es true. Imprime cabecera ancha
@@ -307,12 +298,11 @@ public class Utilidades {
 		else imprimirLineaDatos(anchoColumnas, cabecera, Color.WHITE_UNDERLINED);
 		
 
-		int h = 0;
+		filas=campos.split("\n");
 		Color color;
-		for (String[] fila : tabla) {
-			color= (h % 2)==0 ? Color.YELLOW : Color.WHITE;
-			imprimirLineaDatos(anchoColumnas, fila, color);
-			h++;
+		for (int i=0;i<filas.length;i++) {
+			color= (i % 2)==0 ? Color.YELLOW : Color.WHITE;
+			imprimirLineaDatos(anchoColumnas, filas[i].split(":"), color);
 		}
 
 		imprimirLineaSinDatos(anchoColumnas,100);
@@ -321,7 +311,12 @@ public class Utilidades {
 	
 	
 	
-
+    /**
+     * 
+     * @param cabecera
+     * @param tabla
+     * @return
+     */
 	public static int visualizaTabla(String[] cabecera, String[][] tabla) {
 		
 		int nColCabecera = cabecera.length;
