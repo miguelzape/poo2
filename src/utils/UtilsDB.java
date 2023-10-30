@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+
 public class UtilsDB {
 	
 private static Connection connection;
@@ -47,7 +48,7 @@ private static Connection connection;
 
 		ResultSetMetaData rsmd = null;
 		String[] nombresColumnas;
-		String campos="";
+		StringBuilder tabla = new StringBuilder();
 		String campo="";
 		int nCol=0;
 		int nFil=0;
@@ -73,10 +74,10 @@ private static Connection connection;
 				   campo=rs.getString(j+1);
 				   if (campo==null) campo=" ";
 
-				   if (j>0)
-					   campos = campos + ":" +campo;
-				   else
-					   campos = campos +campo;
+				   if (j>0) {
+					   tabla.append(':');
+				   }
+				   tabla.append(campo);
 				   
 				   if (i == 0) {
 						anchoColumnas[j] = nombresColumnas[j].length();
@@ -86,13 +87,13 @@ private static Connection connection;
 						anchoColumnas[j] = campo.length();
 					}   
 			   }
-			   campos = campos + "\n";
+			   tabla.append('\n');
 			   nFil++;
 			   i++;
 			}
 					
 			
-			Utilidades.visualizaTabla(nombresColumnas, campos , anchoColumnas);
+			Utilidades.visualizaTabla(nombresColumnas, tabla.toString(), anchoColumnas);
 			
 		} catch (Exception e) {
 			System.out.println("error en visualizaTabla " + e.getMessage());

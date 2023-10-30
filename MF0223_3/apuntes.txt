@@ -65,7 +65,6 @@ convertir cadena de texto a numero
 
 https://github.com/miguelzape/POO.git
 
-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
 
 https://github.com/joselllorente/cursogetafe.git
 
