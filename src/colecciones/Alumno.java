@@ -1,5 +1,7 @@
 package colecciones;
 
+import java.util.Collections;
+
 public class Alumno {
 
 	//Variables de instancia
@@ -53,6 +55,7 @@ public class Alumno {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+		
 	}
 
 	public double getNota() {

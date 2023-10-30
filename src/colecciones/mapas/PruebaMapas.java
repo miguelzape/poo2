@@ -34,7 +34,7 @@ public class PruebaMapas {
 		Set<Entry<Integer,String>> entries = mapa1.entrySet();
 		
 		//borrar entrada
-		//esto borra la clave y valor asociadoa a clave 3
+		//esto borra la clave y valor asociada a clave 3
 		mapa1.remove(3);
 		
 		// reeplaza el dato 4, solo si el viejo era "Naranja"
