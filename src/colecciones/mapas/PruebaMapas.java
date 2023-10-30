@@ -36,6 +36,9 @@ public class PruebaMapas {
 		//borrar entrada
 		//esto borra la clave y valor asociadoa a clave 3
 		mapa1.remove(3);
+		
+		// reeplaza el dato 4, solo si el viejo era "Naranja"
+		mapa1.replace(4, "Naraja","Rosa");
 
 	}
 
