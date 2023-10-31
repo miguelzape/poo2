@@ -70,7 +70,7 @@ public class Utilidades {
 		String respuesta;
 		while (true) {
 			respuesta = pideCadena(pregunta);
-			if (respuesta.matches("[0-9]++"))
+			if (respuesta.matches("-?[0-9]++"))
 				return (Long.parseLong(respuesta));
 			else
 				System.out.println("No ha introducido un número");
@@ -292,16 +292,16 @@ public class Utilidades {
 		// si es true. Imprime cabecera ancha
 		// si es false. Imprime cabecera estrecha
 		if (true) {
-			imprimirLineaDatos(anchoColumnas, cabecera, Color.WHITE_BOLD);
+			imprimirLineaDatos(anchoColumnas, cabecera, EnumColor.WHITE_BOLD);
 			imprimirLineaSinDatos(anchoColumnas,3);
 		}
-		else imprimirLineaDatos(anchoColumnas, cabecera, Color.WHITE_UNDERLINED);
+		else imprimirLineaDatos(anchoColumnas, cabecera, EnumColor.WHITE_UNDERLINED);
 		
 
 		filas=campos.split("\n");
-		Color color;
+		EnumColor color;
 		for (int i=0;i<filas.length;i++) {
-			color= (i % 2)==0 ? Color.YELLOW : Color.WHITE;
+			color= (i % 2)==0 ? EnumColor.YELLOW : EnumColor.WHITE;
 			imprimirLineaDatos(anchoColumnas, filas[i].split(":"), color);
 		}
 
@@ -365,16 +365,16 @@ public class Utilidades {
 		// si es true. Imprime cabecera ancha
 		// si es false. Imprime cabecera estrecha
 		if (true) {
-			imprimirLineaDatos(anchoColumnas, cabecera, Color.WHITE_BOLD);
+			imprimirLineaDatos(anchoColumnas, cabecera, EnumColor.WHITE_BOLD);
 			imprimirLineaSinDatos(anchoColumnas,3);
 		}
-		else imprimirLineaDatos(anchoColumnas, cabecera, Color.WHITE_UNDERLINED);
+		else imprimirLineaDatos(anchoColumnas, cabecera, EnumColor.WHITE_UNDERLINED);
 		
 
 		int h = 0;
-		Color color;
+		EnumColor color;
 		for (String[] fila : tabla) {
-			color= (h % 2)==0 ? Color.YELLOW : Color.WHITE;
+			color= (h % 2)==0 ? EnumColor.YELLOW : EnumColor.WHITE;
 			imprimirLineaDatos(anchoColumnas, fila, color);
 			h++;
 		}
@@ -420,7 +420,7 @@ public class Utilidades {
 
 	}
 
-	private static void imprimirLineaDatos(int[] anchoColumnas, String[] contenido, Color color) {
+	private static void imprimirLineaDatos(int[] anchoColumnas, String[] contenido, EnumColor color) {
 
 		String formato;
 		System.out.print("\n║");
@@ -432,7 +432,7 @@ public class Utilidades {
 			formato = String.format(color.toString()+"%%-%ds", anchoColumnas[i]);
 			System.out.printf(formato, contenido[i]);
 			// aqui se reestablece el tipo estandar. letra blancas
-			System.out.print(Color.WHITE.toString() + '║');
+			System.out.print(EnumColor.WHITE.toString() + '║');
 		}
 	}
 

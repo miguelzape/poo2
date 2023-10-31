@@ -1,11 +1,14 @@
 package colecciones.mapas.biblioteca;
 
+
+import java.util.Collections;
+
 import utils.Utilidades;
 
 public class GestionBiblioteca {
 
 	public static void main(String[] args) {
-
+		
 		GestionBiblioteca gestion = new GestionBiblioteca();
 		gestion.menuBiblioteca();
 
@@ -14,19 +17,18 @@ public class GestionBiblioteca {
 	private void menuBiblioteca() {
 
 		Biblioteca biblioteca = new Biblioteca("Moderna");
-		Libro l1 = new Libro("Tiburon", "Pepito Lumbreras", 1);
-		Libro l2 = new Libro("Biblia", "Varios autores", 2);
-		Libro l3 = new Libro("Lazarillo", "Desconocido", 2);
 		String titulo;
 
-		biblioteca.agregarLibro(l1);
-		biblioteca.agregarLibro(l2);
-		biblioteca.agregarLibro(l3);
+		biblioteca.agregarLibro(new Libro("Tiburon", "Pepito Lumbreras", 1));
+		biblioteca.agregarLibro(new Libro("Biblia", "Varios autores", 2));
+		biblioteca.agregarLibro(new Libro("Lazarillo", "Desconocido", 2));
 
-		final String[] menu = { "Agregar nuevo libro", "Prestar libro", "Devolver libro",  "Terminar" };
+		final String[] menu = { "Agregar nuevo libro", "Prestar libro", "Devolver libro", "Salir de la biblioteca" };
 		int opcion = 0;
 
 		while (opcion != 4) {
+			
+			//Collections.sort(biblioteca, new ComparaLibro());
 			biblioteca.verTitulos();
 			opcion = Utilidades.generaMenu(menu);
 
@@ -46,7 +48,11 @@ public class GestionBiblioteca {
 				titulo = Utilidades.pideCadena("Titulo del libro a devolver: ");
 				biblioteca.devolverLibro(titulo);
 				break;
-		
+			// devolver libro
+			case 4:
+				System.out.println("Adios. Vuelva pronto");
+				break;	
+			
 			}
 
 		}

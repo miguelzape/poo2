@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import colecciones.Alumno;
 import utils.Utilidades;
@@ -31,10 +33,10 @@ public class Colegios {
 		}
 
 		// mostrar informacion de todos los alumnos
-		for(Alumno a: alumnosMap.values()) {
-			System.out.printf("\n%-15s %-15s con DNI %s",a.getNombre(),a.getApellidos(),a.getDni());
+		for (Alumno a : alumnosMap.values()) {
+			System.out.printf("\n%-15s %-15s con DNI %s", a.getNombre(), a.getApellidos(), a.getDni());
 		}
-	
+
 		// pedir DNI de alumno y devolver sus datos
 		String dni = Utilidades.pideCadena("\n\nEscriba el DNI de un alumno");
 
@@ -49,7 +51,7 @@ public class Colegios {
 			sumaNotas += alum.getNota();
 		}
 		System.out.println("La nota media de todos los alumnos es :" + sumaNotas / alumnosMap.size());
-		
+
 		List<Alumno> grupo1 = Arrays.asList(alumnos);
 		List<Alumno> grupo2 = new ArrayList<>();
 
@@ -64,26 +66,38 @@ public class Colegios {
 		colegios.put("Los ricos", grupo2);
 
 		for (String colegio : colegios.keySet()) {
-			System.out.println("El colegio " + colegio + " tiene estos alumnos");
-			System.out.println(colegios.get(colegio));
+			System.out.println("El colegio " + colegio + " tiene estos alumnos: ");
+			
+			
+			for (Alumno alumno : colegios.get(colegio)) {
+				System.out.println("\t"+alumno);
+			}
+			
 		}
 
+		// se repite lo anterior usando entrySet
+/*		Set<Entry<String, List<Alumno>>> colegioEntry = colegios.entrySet();
+		for (Entry<String, List<Alumno>> entry : colegioEntry) {
+			System.out.println("El colegio " + entry.getKey() + " tiene estos alumnos");
+			System.out.println(entry.getValue());
+		}  */
+
 		dni = Utilidades.pideCadena("\nEscriba el DNI de un alumno para buscar su colegio: ");
-		
-		String colegioLocalizado=null;
+
+		String colegioLocalizado = null;
 
 		for (String c : colegios.keySet()) {
 			for (Alumno a : colegios.get(c)) {
 				if (a.getDni().equals(dni)) {
-					colegioLocalizado=c;
+					colegioLocalizado = c;
+					break;
 				}
 			}
 		}
-		
-		if (colegioLocalizado==null) {
+
+		if (colegioLocalizado == null) {
 			System.out.println("No se ha encontrado ese alumno en ningun colegio");
-		}
-		else {
+		} else {
 			System.out.println("El alumno con DNI " + dni + " va al colegio " + colegioLocalizado);
 		}
 

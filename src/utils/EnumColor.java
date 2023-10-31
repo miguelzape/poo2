@@ -1,6 +1,6 @@
 package utils;
 
-enum Color {
+public enum EnumColor {
     //Color end string, color reset
     RESET("\033[0m"),
 
@@ -76,7 +76,7 @@ enum Color {
 
     private final String code;
 
-    Color(String code) {
+    EnumColor(String code) {
         this.code = code;
     }
 

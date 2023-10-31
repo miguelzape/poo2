@@ -7,7 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 
-public class UtilsDB {
+public class UtilsDB { 
 	
 private static Connection connection;
 	
@@ -15,7 +15,7 @@ private static Connection connection;
 	 * Conexion por defecto a la base de datos curso de la maquina local
 	 * @return
 	 * @throws SQLException 
-	 */
+	 */ 
 	public static Connection getInstance () throws SQLException {
 		String url = "jdbc:mysql://localhost:3306/curso?serverTimezone=Europe/Madrid";
 		String userName = "root";

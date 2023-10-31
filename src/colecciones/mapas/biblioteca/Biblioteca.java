@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import utils.EnumColor;
+
 
 public class Biblioteca {
 
@@ -54,7 +56,7 @@ public class Biblioteca {
 			return this.libros.get(titulo).sumaCopia();
 		}
 		else {
-			System.out.println("la biblioteca " + this.nombre + " no posee " + titulo);
+			System.out.println("la biblioteca \'" + this.nombre + "\' no posee " + titulo);
 			return 0;
 		}
 	}
@@ -65,14 +67,13 @@ public class Biblioteca {
 	}
 	
 	public void verTitulos () {
-		final String WHITE = "\033[0;37m";    // WHITE
-		final String RED = "\033[0;31m";      // RED
-		System.out.println("La biblioteca " + this.nombre + " tiene estos libros:  ");
+	
+		System.out.println("La biblioteca \'" + this.nombre + "\' tiene estos libros:  ");
 		
 		for (Libro libro : this.libros.values()) {
-			System.out.printf("%s%s (%d), ",libro.hayCopias()?WHITE:RED, libro.getTitulo(),libro.getnCopias());
+			System.out.printf("%s%s (%d), ",libro.hayCopias()?EnumColor.WHITE:EnumColor.RED, libro.getTitulo(),libro.getnCopias());
 		}
-		System.out.print(WHITE + ".\n");
+		System.out.print(EnumColor.WHITE + ".\n");
 		
 	}
 
