@@ -81,5 +81,15 @@ public class Libro {
 	public void setnCopias(int nCopias) {
 		this.nCopias = nCopias<0 ? 0 : nCopias;
 	}
+
+	
+	// metodo toString
+	@Override
+	public String toString() {
+		return "Titulo=" + titulo + ", Autor=" + autor + ". Tenemos " + nCopias + " copias";
+	}
+	
+	
+	
 	
 }

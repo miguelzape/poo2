@@ -25,28 +25,31 @@ public class Colegios {
 		Alumno al7 = new Alumno("7", "Luises", "Atolondraos", 8.7);
 		Alumno al8 = new Alumno("8", "Marias", "Pereses", 9.2);
 
-		Map<String, Alumno> alumnado = new HashMap<>();
+		Map<String, Alumno> alumnosMap = new HashMap<>();
 		for (Alumno alum : alumnos) {
-			alumnado.put(alum.getDni(), alum);
+			alumnosMap.put(alum.getDni(), alum);
 		}
 
 		// mostrar informacion de todos los alumnos
-		System.out.println(alumnado);
+		for(Alumno a: alumnosMap.values()) {
+			System.out.printf("\n%-15s %-15s con DNI %s",a.getNombre(),a.getApellidos(),a.getDni());
+		}
+	
+		// pedir DNI de alumno y devolver sus datos
+		String dni = Utilidades.pideCadena("\n\nEscriba el DNI de un alumno");
 
-		String dni = Utilidades.pideCadena("Escriba el DNI de un alumno");
-
-		if (alumnado.containsKey(dni))
-			System.out.println(alumnado.get(dni));
+		if (alumnosMap.containsKey(dni))
+			System.out.println(alumnosMap.get(dni));
 		else
 			System.out.println("No hay ningun alumno con ese DNI");
 
 		// mostar la nota media de todos los alumnos
 		double sumaNotas = 0;
-		for (Alumno alum : alumnado.values()) {
+		for (Alumno alum : alumnosMap.values()) {
 			sumaNotas += alum.getNota();
 		}
-		System.out.println("La nota media de todos los alumnos es :" + sumaNotas / alumnado.size());
-
+		System.out.println("La nota media de todos los alumnos es :" + sumaNotas / alumnosMap.size());
+		
 		List<Alumno> grupo1 = Arrays.asList(alumnos);
 		List<Alumno> grupo2 = new ArrayList<>();
 

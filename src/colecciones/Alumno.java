@@ -70,8 +70,7 @@ public class Alumno {
 	
 	@Override
 	public String toString() {
-		return "Alumno [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nota=" + nota + ", vip="
-				+ vip + "]";
+		return nombre + " " + apellidos + " con DNI " + dni + " tiene de nota " + nota;
 	}
 
 	//Métodos
