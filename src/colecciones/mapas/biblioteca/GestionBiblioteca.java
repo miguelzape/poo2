@@ -1,6 +1,5 @@
 package colecciones.mapas.biblioteca;
 
-
 import java.util.Collections;
 
 import utils.Utilidades;
@@ -8,7 +7,7 @@ import utils.Utilidades;
 public class GestionBiblioteca {
 
 	public static void main(String[] args) {
-		
+
 		GestionBiblioteca gestion = new GestionBiblioteca();
 		gestion.menuBiblioteca();
 
@@ -27,11 +26,10 @@ public class GestionBiblioteca {
 		int opcion = 0;
 
 		while (opcion != 4) {
-			
-			//Collections.sort(biblioteca, new ComparaLibro());
+
 			biblioteca.verTitulos();
 			opcion = Utilidades.generaMenu(menu);
-
+			
 			switch (opcion) {
 			// agregar nuevo libro
 			case 1:
@@ -51,12 +49,9 @@ public class GestionBiblioteca {
 			// devolver libro
 			case 4:
 				System.out.println("Adios. Vuelva pronto");
-				break;	
-			
+				break;
+
 			}
-
 		}
-
 	}
-
 }

@@ -2,7 +2,7 @@ package colecciones.mapas.biblioteca;
 
 import utils.Utilidades;
 
-public class Libro {
+public class Libro implements Comparable<Libro>{
 	
 	private String titulo;
 	private String autor;
@@ -29,8 +29,16 @@ public class Libro {
 		System.out.println("Introduzca los datos de un nuevo libro");
 		this.titulo = Utilidades.pideCadena("Titulo: ");
 		this.autor = Utilidades.pideCadena("Autor: ");
-		this.nCopias = Utilidades.pideNumero("Numero de copias disponibles: ");
+		this.nCopias = Utilidades.pideNumero("Numero de copias disponibles: ",1,100);
 	}
+	
+	@Override
+	public int compareTo (Libro l1) {
+		return this.getTitulo().compareTo(l1.getTitulo());
+	}
+	
+	
+	
 	
 	// funcion que dice se hay copias disponibles
 	public boolean hayCopias() {
@@ -38,7 +46,7 @@ public class Libro {
 	}
 	
 	
-	// funcion que resta una copia
+    // funcion que resta una copia
 	// devuelve true si se puede restar y false si no existen copias
 		public boolean restaCopia() {
 			if (nCopias>0) {
@@ -55,23 +63,14 @@ public class Libro {
 			return (this.nCopias);
 		}
 		
-
 	
 	//metodos get y set
 	public String getTitulo() {
 		return titulo;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
 	public String getAutor() {
 		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
 	}
 
 	public int getnCopias() {
