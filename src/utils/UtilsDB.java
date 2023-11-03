@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class UtilsDB { 
 	
-private static Connection connection;
+ static Connection connection;
 	
 	/**
 	 * Conexion por defecto a la base de datos curso de la maquina local
