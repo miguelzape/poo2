@@ -19,7 +19,7 @@ public class GestionBiblioDB {
 		grupoBiblio.todo();
 
 	}
-
+	
 	private void todo() {
 
 		String[] menu2 = { "Mostrar Info biblioteca", "Mostrar Libros de la biblioteca", "Buscar Libro",
@@ -32,7 +32,7 @@ public class GestionBiblioDB {
 		List<idMasNombre> lista= this.nombresBibliotecas();
 		
 		menu1= new String[lista.size()+1];
-		idS= new int[lista.size()+1];
+		idS= new int[lista.size()];
 		for (int i=0;i < lista.size();i++) {
 			menu1[i]=lista.get(i).getNombre();
 			idS[i]=lista.get(i).getId();
@@ -45,6 +45,7 @@ public class GestionBiblioDB {
 			opcionMenu2 = 9999;
 
 			while (opcionMenu2 != 7 && opcionMenu1 != menu1.length) {
+				System.out.println();
 				opcionMenu2 = Utilidades.generaMenu(menu2);
 				switch (opcionMenu2) {
 				// mostrar info biblioteca
@@ -138,15 +139,15 @@ public class GestionBiblioDB {
 			prepareStament.setInt(1, idBiblio);
 
 			rs = prepareStament.executeQuery();
-			// UtilsDB.visualizaDBTabla(rs);
+			UtilsDB.visualizaDBTabla(rs);
 
-			while (rs.next()) {
+	/*		while (rs.next()) {
 				int id = rs.getInt("id");
 				String nombre = rs.getString("nombre");
 				String calle = rs.getString("calle");
 				int numero = rs.getInt("numero");
 				System.out.printf("id=%d nombre=%s calle=%s numero=%d\n", id, nombre, calle, numero);
-			}
+			}   */
 
 		} catch (Exception e) {
 			System.out.println("Error SQL al abrir o leer en tb_bibliotecas");
@@ -171,7 +172,7 @@ public class GestionBiblioDB {
 		PreparedStatement prepareStament = null;
 		ResultSet rs = null;
 
-		String consulta = "SELECT * FROM tb_libros WHERE fk_biblio_id = ?";
+		String consulta = "SELECT id, titulo, autor FROM tb_libros WHERE fk_biblio_id = ?";
 
 		try {
 			connection = UtilsDB.getInstance();
@@ -179,15 +180,15 @@ public class GestionBiblioDB {
 			prepareStament.setInt(1, biblioId);
 
 			rs = prepareStament.executeQuery();
-			// UtilsDB.visualizaDBTabla(rs);
+			UtilsDB.visualizaDBTabla(rs);
 
-			while (rs.next()) {
+	/*		while (rs.next()) {
 				int id = rs.getInt("id");
 				String titulo = rs.getString("titulo");
 				String autor = rs.getString("autor");
 
 				System.out.printf("id=%d titulo=%s autor=%s\n", id, titulo, autor);
-			}
+			}   */
 
 		} catch (SQLException e) {
 			System.out.println("Error SQL al abrir o leer en tb_bibliotecas");
@@ -255,7 +256,6 @@ public class GestionBiblioDB {
 
 		Connection connection = null;
 		PreparedStatement prepareStament = null;
-		ResultSet rs = null;
 		
 		String titulo=Utilidades.pideCadena("Titulo: ");
 		String Autor=Utilidades.pideCadena("Autor: ");
@@ -335,21 +335,23 @@ public class GestionBiblioDB {
 		}
 	}
 	
+	
+	
 	private void modificarLibro(int  idBiblioteca) {
 
 		Connection connection = null;
 		PreparedStatement prepareStament = null;
 		ResultSet rs = null;
 		
-		String titulo=Utilidades.pideCadena("Titulo del libro que busca: ");
+		String tituloV=Utilidades.pideCadena("Titulo del libro que busca: ");
 
-		String consulta1 = "SELECT id FROM tb_libros WHERE titulo = ? AND fk_biblio_id = ?;";
+		String consulta1 = "SELECT id, autor FROM tb_libros WHERE titulo = ? AND fk_biblio_id = ?;";
 		String consulta2 = "UPDATE tb_libros SET titulo = ?, autor = ? WHERE id = ?;";
 
 		try {
 			connection = UtilsDB.getInstance();
 			prepareStament = connection.prepareStatement(consulta1);
-			prepareStament.setString(1, titulo);
+			prepareStament.setString(1, tituloV);
 			prepareStament.setInt(2, idBiblioteca);
 
 			rs = prepareStament.executeQuery();
@@ -357,14 +359,23 @@ public class GestionBiblioDB {
 			
 			if (rs.next()) {
 				int id = rs.getInt("id");
-				titulo=Utilidades.pideCadena("Nuevo Titulo: ");
-				String autor=Utilidades.pideCadena("Nuevo Autor: ");
+				String autorV= rs.getString("autor");
+				String tituloN=Utilidades.pideCadena("Nuevo Titulo: ");
+				if (tituloN.length() == 0) {
+					System.out.printf("Se usará el anterior titulo: %s\n",tituloV);
+					tituloN=tituloV;
+				}
+				String autorN=Utilidades.pideCadena("Nuevo Autor: ");
+				if (autorN.length() == 0) {
+					System.out.printf("Se usará el anterior autor: %s\n",autorV);
+					autorN=autorV;
+				}
 				
 				prepareStament.close();
 				
 				prepareStament = connection.prepareStatement(consulta2);
-				prepareStament.setString(1, titulo);
-				prepareStament.setString(2, autor);
+				prepareStament.setString(1, tituloN);
+				prepareStament.setString(2, autorN);
 				prepareStament.setInt(3, id);
 				
 				if (prepareStament.executeUpdate() > 0) {
@@ -373,7 +384,7 @@ public class GestionBiblioDB {
 				
 			}
 			else {
-				System.out.printf("El libro %s NO está en esta biblioteca\n",titulo);
+				System.out.printf("El libro %s NO está en esta biblioteca\n",tituloV);
 			}
 
 		} catch (Exception e) {
@@ -387,6 +398,46 @@ public class GestionBiblioDB {
 				prepareStament.close();
 				rs.close();
 			} catch (SQLException e) {
+				System.out.println("Error SQL al cerrar tb_bibliotecas");
+			}
+		}
+	}
+	
+	private void busarLibrosFiltrado(int biblioId) {
+
+		Connection connection = null;
+		PreparedStatement prepareStament = null;
+		ResultSet rs = null;
+
+		String consulta = "SELECT id, titulo, autor FROM tb_libros WHERE fk_biblio_id = ?";
+
+		try {
+			connection = UtilsDB.getInstance();
+			prepareStament = connection.prepareStatement(consulta);
+			prepareStament.setInt(1, biblioId);
+
+			rs = prepareStament.executeQuery();
+			UtilsDB.visualizaDBTabla(rs);
+
+	/*		while (rs.next()) {
+				int id = rs.getInt("id");
+				String titulo = rs.getString("titulo");
+				String autor = rs.getString("autor");
+
+				System.out.printf("id=%d titulo=%s autor=%s\n", id, titulo, autor);
+			}   */
+
+		} catch (SQLException e) {
+			System.out.println("Error SQL al abrir o leer en tb_bibliotecas");
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+				// UtilsDB.cerrarConexion();
+				prepareStament.close();
+				rs.close();
+			} catch (Exception e) {
 				System.out.println("Error SQL al cerrar tb_bibliotecas");
 			}
 		}

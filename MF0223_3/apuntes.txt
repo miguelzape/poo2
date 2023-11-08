@@ -120,6 +120,13 @@ public class DeclareAnArray {
     }
 }
 
+PATRONES PARA ACCEDER A BASES DE DATOS
+
+DTO y DAO
+
+Data Transport Object
+Data Access Object
+
 
 ademas de los bloques Try Catch existe el Try With resources
 
