@@ -51,7 +51,6 @@ public class UtilsDB {
 		StringBuilder tabla = new StringBuilder();
 		String campo="";
 		int nCol=0;
-		int nFil=0;
 		int anchoColumnas[];
 		
 		try {
@@ -67,7 +66,7 @@ public class UtilsDB {
 			}
 			
 			// este bucle crea una cadena 'campos' con todo el contenido de la base
-			// de datos con cada campo separado por ':' y cada linea separaad por '\n'
+			// de datos con cada campo separado por ':' y cada linea separada por '\n'
 			int i=0;
 			while (rs.next()){
 			   for (int j=0;j<nCol;j++) {
@@ -88,7 +87,6 @@ public class UtilsDB {
 					}   
 			   }
 			   tabla.append('\n');
-			   nFil++;
 			   i++;
 			}
 					
