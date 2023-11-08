@@ -21,4 +21,35 @@ INSERT INTO tb_libros (titulo,autor,fk_biblio_id) VALUES
 ("Hobbit","Tolkien",3);
 
 
-SELECT * FROM tb_libros ORDER BY id;
+-- SELECT * FROM tb_libros ORDER BY id;
+
+-- *****   Soliticar los datos de todos los libros de una biblioteca   *****
+-- *****   ? es el id de la biblioteca   *****
+
+-- SELECT id, titulo, autor FROM tb_libros WHERE fk_biblio_id = ?
+
+
+-- *****   Comprobar si existe un libro determinado en la biblioteca   *****
+-- *****   primer ?: el titulo del libro, segundo ?: el id de la biblioteca *****
+
+
+-- SELECT * FROM tb_libros WHERE titulo = ? AND fk_biblio_id = ?
+
+-- *****   Insertar un libro en la biblioteca   *****
+-- *****   primer ?:tilo , segundo ?:autor, tercer ?:id de la biliblioteca   *****
+
+-- INSERT INTO tb_libros (titulo, autor, fk_biblio_id) VALUES (?, ?, ?)
+
+-- *****   Borrar un libro de la biblioteca   *****
+-- *****   ? es el titulo del libro   *****
+
+-- DELETE FROM tb_libros WHERE titulo = ?
+
+-- *****   Modificar los datos de un libro   *****
+-- *****   Requiere dos condsultas. los parametros de cada una son   *****
+-- *****   primer ?:titulo del libro, segundo ?: id de la bilioteca   *****
+-- *****   primer ?:nuevo titulo, segundo ?:nuevo auto, tercer ?:el id obtenido en la primera consulta
+
+-- SELECT id FROM tb_libros WHERE titulo = ? AND fk_biblio_id = ?
+-- UPDATE tb_libros SET titulo = ?, autor = ? WHERE id = ?
+
