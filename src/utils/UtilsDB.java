@@ -20,10 +20,7 @@ public class UtilsDB {
 		String url = "jdbc:mysql://localhost:3306/curso?serverTimezone=Europe/Madrid";
 		String userName = "root";
 		String password = "password";
-		
-		
 		connection = getInstance(url, userName, password);
-		
 		return connection;
 	}
 	

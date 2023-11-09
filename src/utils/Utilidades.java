@@ -1,6 +1,7 @@
 package utils;
 
 
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -187,13 +188,7 @@ public class Utilidades {
 	 * @return Int con la opcion del menu seleccionada .
 	 */
 	static public int generaMenu(String opciones[]) {
-		int longitud = opciones.length;
-
-		System.out.println("Menu de opciones");
-		for (int i = 0; i < longitud; i++) {
-			System.out.println((i + 1) + ". " + opciones[i]);
-		}
-		return (pideNumero("\nElija una opción", 1, longitud));
+		return generaMenu("Menu de opciones",opciones);
 	}
 
 	/**
@@ -253,7 +248,31 @@ public class Utilidades {
 		System.out.println((longitud + 1) + ". " + salida);
 		return (pideNumero("\nElija una opción", 1, longitud + 1));
 	}
-
+	
+	/**
+	 * Escribe en pantalla las List de string en forma de menu (uno en cada linea
+	 * con el numero de opcion delante) y espera a que el usuario elija una opcion.
+	 * Si la opcion elejida no esta dentro de rango valido se da un aviso y se
+	 * vuelve a solicitar
+	 * 
+	 * @param cabecera texto que encabeza el menu
+	 * @param opciones Lista de String con las opciones del menu.(SIN NUMEROS DE
+	 *                 OPCION)
+	 * @param salida   texto para la opcion que cierra el menu
+	 * @return Int con la opcion del menu seleccionada .
+	 */
+	static public int generaMenu(String cabecera, List<String> opciones, String salida) {
+		System.out.println(cabecera);
+		int i=1;
+		for (String cadena : opciones) 
+		{	
+			System.out.println((i++) + ". " + cadena);
+		}
+		System.out.println((i) + ". " + salida);
+		return (pideNumero("\nElija una opción", 1,i));
+	}
+	
+	
 	static public double aleatorio(int min, int max) {
 		Random r = new Random();
 
