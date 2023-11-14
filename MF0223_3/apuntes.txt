@@ -147,6 +147,20 @@ I Isolation (aislamiento, bloquear una tabla si una aplicacion esta trabajando c
 D Durability  (durabilidad, la base de datos no puede perder los datos ni modificarlos libremente)
 
 
+MAVEN
+
+File, New, Maven Proyect
+
+NIVELES DE LOGS
+
+-Debug
+-Info
+-Warning
+-Error
+-Fatal
+
+
+
 
 
 

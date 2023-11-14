@@ -415,7 +415,7 @@ public class Utilidades {
 			inicio = '╔';
 			medio = '╦';
 			fin = '╗';
-		} else if (linea == 3 || linea == 2) {
+		} else if (linea == 3) {
 			inicio = '╠';
 			medio = '╬';
 			fin = '╣';

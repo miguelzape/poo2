@@ -46,7 +46,7 @@ public class GestionBiblioteca {
 				titulo = Utilidades.pideCadena("Titulo del libro a devolver: ");
 				biblioteca.devolverLibro(titulo);
 				break;
-			// devolver libro
+			// salir
 			case 4:
 				System.out.println("Adios. Vuelva pronto");
 				break;
