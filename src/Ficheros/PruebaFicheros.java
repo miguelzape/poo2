@@ -26,17 +26,20 @@ public class PruebaFicheros {
 		File nuevoDirectorio = new File(".\\recursos\\nuevoDeMiguel");
 		cuantosJpg(dirInicial);
 		ficherosEsteAnio(dirInicial);
-		File nuevo = renombrarCiertoFichero(dirInicial);
+		File renombrado = renombrarCiertoFichero(dirInicial);
+		moverFichero(renombrado, nuevoDirectorio);
+	}
+	
+	private void moverFichero(File f, File nuevoDirectorio) {
 		if (nuevoDirectorio.mkdir()) {
-			logger.debug("Creado el directrio " + nuevoDirectorio);
+			logger.debug("Creado el directorio " + nuevoDirectorio);
 		}
 
-		if (nuevo != null && nuevo.exists()) {
-			if (nuevo.renameTo(new File(nuevoDirectorio, nuevo.getName()))) {
-				logger.debug("Movido fichero " + nuevo.getName() + " a " + nuevoDirectorio);
+		if (f != null && f.exists()) {
+			if (f.renameTo(new File(nuevoDirectorio, f.getName()))) {
+				logger.debug("Movido fichero " + f.getName() + " a " + nuevoDirectorio.getAbsolutePath());
 			}
 		}
-
 	}
 
 	private void cuantosJpg(File rutaDirectorio) {
