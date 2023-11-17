@@ -32,7 +32,7 @@
 		</Logger>
 		
 <!-- 		cambiar aqui el nivel deseado -->
-		<Root level="debug">
+		<Root level="trace">
 			<AppenderRef ref="LogToConsole" />
 			 <AppenderRef ref="rollingFile"/>
 		</Root>

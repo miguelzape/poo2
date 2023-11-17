@@ -31,8 +31,8 @@ public class PruebaFicheros {
 	}
 	
 	private void moverFichero(File f, File nuevoDirectorio) {
-		if (nuevoDirectorio.mkdir()) {
-			logger.debug("Creado el directorio " + nuevoDirectorio);
+		if (!nuevoDirectorio.mkdir()) {
+			logger.warn("No se ha creado el directorio " + nuevoDirectorio.getAbsolutePath());
 		}
 
 		if (f != null && f.exists()) {
@@ -72,6 +72,7 @@ public class PruebaFicheros {
 		int mes = LocalDate.now().getMonthValue();
 		++year;
 		File nuevoFichero = null;
+		
 
 		for (File f : dirAll(rutaDirectorio)) {
 			if (f.getName().contains(String.valueOf(year))) {
