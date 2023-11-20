@@ -15,9 +15,8 @@ import org.apache.logging.log4j.Logger;
 
 import utils.UtilsDB;
 
-
 public class Principal {
-	
+
 	private static final Logger logger = LogManager.getLogger(Principal.class);
 
 	public static void main(String[] args) {
@@ -26,43 +25,39 @@ public class Principal {
 		base.inicio();
 
 	}
-	
+
 	public void inicio() {
-		
-		
-		List<Personilla> lista = rellenaLista (leerArchivoAlumnos(".\\recursos\\alumnos.txt"));
-		logger.trace("Se han creado " + lista.size() + " objetos"); 
-		
+
+		List<Personilla> lista = rellenaLista(leerArchivoAlumnos(".\\recursos\\alumnos.txt"));
+		logger.trace("Se han creado " + lista.size() + " objetos");
+
 		String[] bibliotecas = leeArchivoBibliotecas(".\\recursos\\bibliotecas.txt").split("\n");
-		
-		for (String b: bibliotecas) {
+
+		for (String b : bibliotecas) {
 			logger.trace("insertar una biblioteca nueva");
 			InsertarDatosBD(b);
 		}
-		
-		
+
 	}
-	
-	public List<Personilla> rellenaLista (List<String> lineas){
+
+	public List<Personilla> rellenaLista(List<String> lineas) {
 		String[] datos;
-		List<Personilla> personillas=new ArrayList<Personilla>();
-		
-		for (String cadena : lineas) 
-		{
-			datos=cadena.split("\\|");
-			int extra1= Integer.parseInt(datos[3]);
-			int extra2= Integer.parseInt(datos[4].substring(0, 1));
-			Personilla aux=new Personilla(datos[0],datos[1],datos[2],extra1,extra2);
+		List<Personilla> personillas = new ArrayList<Personilla>();
+
+		for (String cadena : lineas) {
+			datos = cadena.split("\\|");
+			int extra1 = Integer.parseInt(datos[3]);
+			int extra2 = Integer.parseInt(datos[4].substring(0, 1));
+			Personilla aux = new Personilla(datos[0], datos[1], datos[2], extra1, extra2);
 			personillas.add(aux);
 		}
 		return personillas;
 	}
-	
-	
+
 	public List<String> leerArchivoAlumnos(String nombreFichero) {
 		File archivo = new File(nombreFichero);
 		List<String> lista = new ArrayList<String>();
-		
+
 		try (Scanner s = new Scanner(archivo)) {
 
 			s.useDelimiter("\n");
@@ -75,12 +70,11 @@ public class Principal {
 		}
 		return lista;
 	}
-	
-	
+
 	public String leeArchivoBibliotecas(String nombreFichero) {
 		File archivo = new File(nombreFichero);
 		StringBuilder cadena = new StringBuilder();
-		
+
 		try (Scanner s = new Scanner(archivo)) {
 
 			s.useDelimiter("\n");
@@ -94,58 +88,62 @@ public class Principal {
 		}
 		return cadena.toString();
 	}
-	
+
 	private void InsertarDatosBD(String cadena) {
 
 		Connection connection = null;
 		PreparedStatement prepareStament = null;
-		ResultSet rs=null;
-		
+		ResultSet rs = null;
+
 		String[] datos = cadena.split("\\|");
 
 		String consulta1 = "INSERT INTO tb_direcciones (calle, numero) VALUES (?, ?);";
-		String consulta2 = "SELECT numero FROM tb_direcciones WHERE calle = ? AND numero = ?;";
+		String consulta2 = "SELECT id FROM tb_direcciones WHERE calle = ? AND numero = ?;";
 		String consulta3 = "INSERT INTO tb_bibliotecas (nombre, fk_dir_id) VALUES (?, ?);";
-		
 
 		try {
 			connection = UtilsDB.getInstance();
-			
-			//insertar datos en la tabla direcciones
+
+			// insertar datos en la tabla direcciones
 			prepareStament = connection.prepareStatement(consulta1);
 			prepareStament.setString(1, datos[1]);
 			prepareStament.setInt(2, Integer.parseInt(datos[4]));
-		
-			
+
 			if (prepareStament.executeUpdate() == 0) {
 				logger.trace("direccion no insertada");
 			}
-			
+
 			prepareStament.close();
-			
+
 			// consultar el numero de id que se ha dado a la nueva direccion
 			prepareStament = connection.prepareStatement(consulta2);
 			prepareStament.setString(1, datos[1]);
 			prepareStament.setInt(2, Integer.parseInt(datos[4]));
-			
-			rs=prepareStament.executeQuery();
+
+			rs = prepareStament.executeQuery();
 			rs.next();
 			int id = rs.getInt(1);
 			prepareStament.close();
-			
-			//insertar datos en la tabla biblioteca
-			
+		
+
+			// insertar datos en la tabla biblioteca
+
 			prepareStament = connection.prepareStatement(consulta3);
-			prepareStament.setString(1, datos[5]);
+
+			int j = datos[5].indexOf("\n");
+			String nombreBiblio = datos[5];
+			if (j > 0) {
+				nombreBiblio = nombreBiblio.substring(0, j);
+				logger.debug("quitado un simbolo de nueva linea");
+			}
+
+			logger.debug("insertar en tb_biblioteca: " + consulta3 + " " + nombreBiblio + " " + id);
+			prepareStament.setString(1, nombreBiblio);
 			prepareStament.setInt(2, id);
-			
+
 			if (prepareStament.executeUpdate() == 0) {
 				logger.trace("biblioteca no insertado");
 			}
-			
-			
-			
-			
 
 		} catch (SQLException e) {
 			System.out.println("Error SQL");
@@ -156,12 +154,11 @@ public class Principal {
 			try {
 				// UtilsDB.cerrarConexion();
 				prepareStament.close();
+				rs.close();
 			} catch (Exception e) {
 				System.out.println("Error SQL al cerrar");
 			}
 		}
 	}
-	
-	
 
 }
