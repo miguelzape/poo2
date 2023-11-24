@@ -6,11 +6,29 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 
 public class UtilsDB { 
 	
  static Connection connection;
+ private static final EntityManagerFactory entityManagerFactory = buildEntityManagerFactory();
 	
+ private static EntityManagerFactory buildEntityManagerFactory(){
+     return Persistence.createEntityManagerFactory("ejemploHibernate");
+ }
+
+ public static EntityManager getEntityManager() { 
+     return entityManagerFactory.createEntityManager();
+     
+     
+ }
+ 
+ 
+ 
+ 
 	/**
 	 * Conexion por defecto a la base de datos curso de la maquina local
 	 * @return

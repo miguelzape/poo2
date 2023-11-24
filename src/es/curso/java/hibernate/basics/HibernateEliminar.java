@@ -3,8 +3,8 @@ package es.curso.java.hibernate.basics;
 import java.util.Scanner;
 
 import es.curso.java.hibernate.basics.entities.Cliente;
-import es.curso.java.hibernate.util.JpaUtil;
 import jakarta.persistence.EntityManager;
+import utils.UtilsDB;
 
 public class HibernateEliminar {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class HibernateEliminar {
         Scanner scan = new Scanner(System.in);
         System.out.println("Ingrese el id del cliente a eliminar:");
         Long id = scan.nextLong();
-        EntityManager em = JpaUtil.getEntityManager();
+        EntityManager em = UtilsDB.getEntityManager();
         try {
             Cliente cliente = em.find(Cliente.class, id);
             //Cliente cliente1 = new Cliente();

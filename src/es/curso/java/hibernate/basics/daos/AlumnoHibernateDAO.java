@@ -7,14 +7,14 @@ import org.apache.logging.log4j.Logger;
 
 import es.curso.java.hibernate.basics.entities.Alumno;
 import es.curso.java.hibernate.basics.enums.AlumnoEnum;
-import es.curso.java.hibernate.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
+import utils.UtilsDB;
 
 public class AlumnoHibernateDAO {
 	private static final Logger logger = LogManager.getLogger(AlumnoHibernateDAO.class);
-	private static EntityManager em = JpaUtil.getEntityManager();
+	private static EntityManager em = UtilsDB.getEntityManager();
 
 	public static void cargaInicial() {
 		logger.debug("Empezando carga inicial de datos");
