@@ -1,11 +1,13 @@
 package es.curso.java.hibernate.miPrimerHibernate;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import es.curso.java.hibernate.basics.daos.AlumnoHibernateDAO;
+import es.curso.java.hibernate.basics.entities.Cliente;
 import es.curso.java.hibernate.miPrimerHibernate.entities.Usuario;
 import jakarta.persistence.EntityManager;
 import utils.UtilsDB;
@@ -24,6 +26,7 @@ public class Principal {
 	public void inicio() {
 			
 		insertaUsuarios();
+		consultarTodo();
 		em.close();
 	}
 	
@@ -44,7 +47,11 @@ public class Principal {
 		}
 		logger.debug("Termina");
 		
-		
+	}
+	
+	public void consultarTodo() {
+		List<Usuario> usuarios = em.createQuery("FROM Usuario", Usuario.class).getResultList();
+        usuarios.forEach(System.out::println);//Método Referencia
 	}
 
 }
