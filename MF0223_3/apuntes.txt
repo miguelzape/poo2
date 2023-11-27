@@ -151,6 +151,12 @@ MAVEN
 
 File, New, Maven Proyect
 
+al crearlo pide
+
+Group id:
+Artifact id:
+Name:
+
 NIVELES DE LOGS
 
 -Trace		1

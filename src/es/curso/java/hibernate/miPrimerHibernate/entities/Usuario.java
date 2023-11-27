@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table (name="TB_Usuario")
-public class Usuario {
+public class Usuario { 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -21,11 +21,10 @@ public class Usuario {
 	private String apellidos;
 	@Column (length=10, unique=true)
 	private String dni;
+	@Column (name = "Fecha_Alta")
 	private Date fechaAlta;
-	
-	
-	
-	
+
+
 	public Usuario(String nombre, String apellidos, String dni, Date fechaAlta) {
 		super();
 		this.nombre = nombre;

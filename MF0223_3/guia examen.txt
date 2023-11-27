@@ -1,0 +1,14 @@
+del documento 1.bases de datos
+	entra todo y son 15 preguntas
+del docuemto 2.SQL
+	aproximadamente de paginas 1 a 15 entran 14 preguntas
+	del resto sera 1 pregunta
+
+Las otras 15 preguntas seran de :
+Maven  
+Log4J (logger)
+Hibernate
+
+
+Ir creando un nuevo proyecto Maven, con mis librerias auxialiares y subierlo a git en un repositorio Publico para que lo
+pueda regoger el profesor
