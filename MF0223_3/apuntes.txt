@@ -153,9 +153,9 @@ File, New, Maven Proyect
 
 al crearlo pide
 
-Group id:
+Group id: 
 Artifact id:
-Name:
+Version:
 
 NIVELES DE LOGS
 

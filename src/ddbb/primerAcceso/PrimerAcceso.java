@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import utils.UtilsDB;
+import utils.Utilidades;
 
 public class PrimerAcceso {
 	
@@ -42,7 +42,7 @@ public class PrimerAcceso {
 			rs = stmt.executeQuery("SELECT * FROM TB_FACILITIES ORDER BY guid DESC");
 			rsmd = rs.getMetaData();
 			
-			UtilsDB.visualizaDBTabla(rs);
+			Utilidades.visualizaDBTabla(rs);
 			
 			rs = stmt.executeQuery("SELECT * FROM TB_FACILITIES ORDER BY guid DESC");
 			rsmd = rs.getMetaData();

@@ -149,7 +149,7 @@ private static final Logger logger = LogManager.getLogger(GestionBiblioDB.class)
 			prepareStament.setInt(1, idBiblio);
 
 			rs = prepareStament.executeQuery();
-			UtilsDB.visualizaDBTabla(rs);
+			Utilidades.visualizaDBTabla(rs);
 
 			/*
 			 * while (rs.next()) { 
@@ -190,7 +190,7 @@ private static final Logger logger = LogManager.getLogger(GestionBiblioDB.class)
 			prepareStament.setInt(1, biblioId);
 
 			rs = prepareStament.executeQuery();
-			UtilsDB.visualizaDBTabla(rs);
+			Utilidades.visualizaDBTabla(rs);
 
 			/*
 			 * while (rs.next()) { 
@@ -391,7 +391,7 @@ private static final Logger logger = LogManager.getLogger(GestionBiblioDB.class)
 			}
 
 			rs = prepareStament.executeQuery();
-			UtilsDB.visualizaDBTabla(rs);
+			Utilidades.visualizaDBTabla(rs);
 
 		} catch (SQLException e) {
 			System.out.println("Error SQL al abrir o leer en tb_bibliotecas");
@@ -424,7 +424,7 @@ private static final Logger logger = LogManager.getLogger(GestionBiblioDB.class)
 			stnt = connection.createStatement();
 
 			rs = stnt.executeQuery(consulta);
-			UtilsDB.visualizaDBTabla(rs);
+			Utilidades.visualizaDBTabla(rs);
 
 		} catch (Exception e) {
 			System.out.println("Error SQL al abrir o leer en tb_bibliotecas");

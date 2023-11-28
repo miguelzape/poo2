@@ -5,7 +5,9 @@
         <!-- entidades o entities -->
         <class>es.curso.java.hibernate.basics.entities.Cliente</class>
         <class>es.curso.java.hibernate.basics.entities.Alumno</class>
+        
         <class>es.curso.java.hibernate.miPrimerHibernate.entities.Usuario</class>
+        <class>es.curso.java.hibernate.delprofesor.entity.UserEntity</class>
         
         
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
@@ -19,4 +21,22 @@
  			<property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
+    
+    
+    <persistence-unit name="ejemploHibernateOracle" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>es.curso.java.hibernate.delprofesor.entity.UserEntity</class>
+       
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties> 
+    		<property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+            <property name="jakarta.persistence.jdbc.user" value="curso"/>
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
+            <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+ 			<property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+    </persistence-unit>
+    
 </persistence>

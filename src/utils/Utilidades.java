@@ -1,6 +1,8 @@
 package utils;
 
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -453,6 +455,61 @@ public class Utilidades {
 			// aqui se reestablece el tipo estandar. letra blancas
 			System.out.print(EnumColor.WHITE.toString() + '║');
 		}
+	}
+	
+	public static void visualizaDBTabla(ResultSet rs) {
+
+		ResultSetMetaData rsmd = null;
+		String[] nombresColumnas;
+		StringBuilder tabla = new StringBuilder();
+		String campo="";
+		int nCol=0;
+		int anchoColumnas[];
+		
+		try {
+			rsmd = rs.getMetaData();
+			nCol = rsmd.getColumnCount();
+			
+			anchoColumnas = new int[nCol];
+			
+			// guardar numero de columnas y el nombre de cada una de ellas
+			nombresColumnas = new String[nCol];
+			for (int iter = 0; iter < nCol; iter++) {
+				nombresColumnas[iter] = rsmd.getColumnName(iter+1);
+			}
+			
+			// este bucle crea una cadena 'campos' con todo el contenido de la base
+			// de datos con cada campo separado por ':' y cada linea separada por '\n'
+			int i=0;
+			while (rs.next()){
+			   for (int j=0;j<nCol;j++) {
+				   campo=rs.getString(j+1);
+				   if (campo==null) campo=" ";
+
+				   if (j>0) {
+					   tabla.append(':');
+				   }
+				   tabla.append(campo);
+				   
+				   if (i == 0) {
+						anchoColumnas[j] = nombresColumnas[j].length();
+					}
+
+					if (campo.length() > anchoColumnas[j]) {
+						anchoColumnas[j] = campo.length();
+					}   
+			   }
+			   tabla.append('\n');
+			   i++;
+			}
+					
+			
+			Utilidades.visualizaTabla(nombresColumnas, tabla.toString(), anchoColumnas);
+			
+		} catch (Exception e) {
+			System.out.println("error en visualizaTabla " + e.getMessage());
+		}
+		
 	}
 
 }
