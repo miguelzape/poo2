@@ -70,6 +70,7 @@ XXXX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XXXX
 https://github.com/joselllorente/cursogetafe.git
 
 https://github.com/miguelzape/examen1.git
+https://github.com/miguelzape/Examen2.git
 
 conexon a mongoDB
 
@@ -153,9 +154,9 @@ File, New, Maven Proyect
 
 al crearlo pide
 
-Group id: 
-Artifact id:
-Version:
+Group id: 	es.sfsd.sdfsd 
+Artifact id:	el nombre del proyecto
+Version: la version de nuestro software
 
 NIVELES DE LOGS
 

@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 @Table (name="TB_Usuario")
 public class Usuario { 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 	@Column (length=20)
 	private String nombre;

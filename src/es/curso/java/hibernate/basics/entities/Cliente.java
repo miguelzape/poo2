@@ -12,7 +12,7 @@ import jakarta.persistence.Transient;
 @Table(name="TB_CLIENTES")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name="nombre_cliente", length = 30 , nullable = false )

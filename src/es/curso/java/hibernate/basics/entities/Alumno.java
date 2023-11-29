@@ -12,7 +12,8 @@ import jakarta.persistence.Transient;
 @Table(name = "TB_ALUMNO")
 public class Alumno {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
 	private String nombre;
@@ -20,7 +21,7 @@ public class Alumno {
 	
 	@Column(length = 9, name = "DNI_ALUMNO", unique = true)
 	private String dni;
-	
+	@Column(name = "Usuario")
 	private String user;
 	
 	@Transient
