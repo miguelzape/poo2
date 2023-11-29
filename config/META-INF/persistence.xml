@@ -25,7 +25,7 @@
     
     <persistence-unit name="ejemploHibernateOracle" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>es.curso.java.hibernate.delprofesor.entity.UserEntity</class>
+        <class>es.curso.java.hibernate.segundo.Usuario</class>
        
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties> 

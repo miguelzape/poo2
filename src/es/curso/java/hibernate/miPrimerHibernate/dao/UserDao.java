@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import es.curso.java.hibernate.miPrimerHibernate.entities.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
-import utils.UtilsDB;
+import utils.JpaUtil;
 
 public class UserDao {
 	
@@ -18,7 +18,7 @@ public class UserDao {
 	
 	public UserDao() {
 		super();
-		em = UtilsDB.getEntityManager();
+		em = JpaUtil.getEntityManager();
 		// TODO Auto-generated constructor stub
 	}
 
