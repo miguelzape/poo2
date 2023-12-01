@@ -4,12 +4,12 @@ import javax.swing.JOptionPane;
 
 import es.curso.java.hibernate.basics.entities.Cliente;
 import jakarta.persistence.EntityManager;
-import utils.UtilsDB;
+import utils.JpaUtil;
 
 public class HibernateEditar {
     public static void main(String[] args) {
 
-        EntityManager em = UtilsDB.getEntityManager();
+        EntityManager em = JpaUtil.getEntityManager();
         try {
 
             Long id = Long.valueOf(JOptionPane.showInputDialog("Ingrese el id del cliente a modificar:"));

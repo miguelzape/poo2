@@ -5,6 +5,7 @@ import java.util.Scanner;
 import es.curso.java.hibernate.basics.entities.Cliente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import utils.JpaUtil;
 import utils.UtilsDB;
 
 public class HibernateSingleResultWhere {
@@ -12,7 +13,7 @@ public class HibernateSingleResultWhere {
 
         Scanner scan = new Scanner(System.in);
 
-        EntityManager em = UtilsDB.getEntityManager();
+        EntityManager em = JpaUtil.getEntityManager();
         Query query = em.createQuery("from Cliente c where c.formaPago=?1", Cliente.class);
         System.out.println("Ingrese una forma de pago: ");
         String pago = scan.next();

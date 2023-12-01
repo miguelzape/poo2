@@ -7,14 +7,14 @@ import org.apache.logging.log4j.Logger;
 
 import es.curso.java.hibernate.basics.entities.Cliente;
 import jakarta.persistence.EntityManager;
-import utils.UtilsDB;
+import utils.JpaUtil;
 
 public class HibernateListar {
 	
 	private static final Logger logger = LogManager.getLogger(HibernateListar.class);
     public static void main(String[] args) {
     	logger.debug("Empezando");
-        EntityManager em = UtilsDB.getEntityManager();
+        EntityManager em = JpaUtil.getEntityManager();
         Cliente cliente1 = new Cliente("Nombre1","Apellido","Efectivo");
         Cliente cliente2 = new Cliente("Nombre2","Apellido2","Tarjeta");
         em.getTransaction().begin();

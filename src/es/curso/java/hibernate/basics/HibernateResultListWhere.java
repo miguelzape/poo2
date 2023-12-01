@@ -6,14 +6,14 @@ import java.util.Scanner;
 import es.curso.java.hibernate.basics.entities.Cliente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
-import utils.UtilsDB;
+import utils.JpaUtil;
 
 public class HibernateResultListWhere {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        EntityManager em = UtilsDB.getEntityManager();
+        EntityManager em = JpaUtil.getEntityManager();
         Query query = em.createQuery("from Cliente c where c.formaPago=?1", Cliente.class);
         System.out.println("Ingrese una forma de pago: ");
         String pago = scanner.next();

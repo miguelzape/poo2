@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import es.curso.java.hibernate.basics.entities.Cliente;
 import jakarta.persistence.EntityManager;
-import utils.UtilsDB;
+import utils.JpaUtil;
 
 public class HibernatePorId {
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class HibernatePorId {
         System.out.println("Ingrese el id: ");
         Long id = scanner.nextLong();
         
-        EntityManager em = UtilsDB.getEntityManager();
+        EntityManager em = JpaUtil.getEntityManager();
         Cliente cliente = em.find(Cliente.class, id);
         System.out.println(cliente);
 
