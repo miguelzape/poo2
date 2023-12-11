@@ -27,8 +27,26 @@ public class ProductosDAO {
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 		}
-
 	}
+	
+	// al llamarlo se puede crear la lista de productos facilmente usando
+	// List<String> list = Arrays.asList("freeCodeCamp","let's","create");
+	public void insertarVariosProductos(List<Productos> p) {
+		em.getTransaction().begin();
+		try {
+			for (Productos produc : p) {
+				em.persist(produc);
+			}
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
+	}
+	
+	
+	
+	
+	
 
 	public List<Productos> getAll() {
 		return em.createQuery("from Productos", Productos.class).getResultList();
@@ -38,14 +56,18 @@ public class ProductosDAO {
 	// mostrar los productos creados esta fecha
 	public List<Productos> getForDate(Date fecha) {
 
-		TypedQuery<Productos> query = em.createQuery("from Productos where fechaAlta=?1", Productos.class);
+		TypedQuery<Productos> query = em.createQuery(
+				"from Productos where fechaAlta=?1", Productos.class);
 
 		query.setParameter(1, fecha);
 		return query.getResultList();
 	}
 
 	public List<AuxBusqueda> getEspecial() {
-		TypedQuery<AuxBusqueda> query = em.createQuery("SELECT NEW es.curso.java.hibernate.segundo.AuxBusqueda(tipo,AVG(precio),COUNT(id)) FROM Productos GROUP BY tipo",AuxBusqueda.class);
+		TypedQuery<AuxBusqueda> query = em.createQuery(
+			"SELECT NEW es.curso.java.hibernate.segundo.AuxBusqueda(tipo,AVG(precio),SUM(unidades)) "
+			+ "FROM Productos "
+			+ "GROUP BY tipo" ,AuxBusqueda.class);
 		return query.getResultList();		 
 	}
 }
