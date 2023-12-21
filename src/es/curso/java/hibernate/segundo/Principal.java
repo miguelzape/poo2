@@ -28,7 +28,7 @@ public class Principal {
 
 	public void inicio() {
 
-		em = JpaUtil.getEntityManager();
+		em = JpaUtil.getEM();
 		UsuarioDAO udao = new UsuarioDAO(em);
 		ProductosDAO pdao = new ProductosDAO(em);
 		

@@ -71,6 +71,7 @@ https://github.com/joselllorente/cursogetafe.git
 
 https://github.com/miguelzape/examen1.git
 https://github.com/miguelzape/examen2.git
+https://github.com/miguelzape/examen2moduloSQL.git
 
 conexon a mongoDB
 

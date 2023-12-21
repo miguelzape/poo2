@@ -28,6 +28,12 @@
         <class>es.curso.java.hibernate.segundo.Usuario</class>
         <class>es.curso.java.hibernate.segundo.Productos</class>
         <class>es.curso.java.hibernate.segundo.AuxBusqueda</class>
+       	<class>es.curso.java.hibernate.biblio.Biblioteca</class>
+       	<class>es.curso.java.hibernate.biblio.Direccion</class>
+       	<class>es.curso.java.hibernate.relations.unomuchos.entities.Libro</class>
+       	<class>es.curso.java.hibernate.relations.unomuchos.entities.Persona</class>
+       	
+       	
        
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties> 
@@ -37,7 +43,7 @@
             <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
             <property name="hibernate.show_sql" value="true"/>
- 			<property name="hibernate.hbm2ddl.auto" value="create"/>
+ 			<property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
     
