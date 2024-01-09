@@ -1,0 +1,263 @@
+git --version
+
+#Ayuda de git
+git help
+
+#Información por comando
+git help mv
+
+#salimos con q
+
+#Establecer credenciales del usuario
+==========================================================================
+git config --global user.name "nombreUsuario"
+git config --global user.email "correo@correo@gmail.com"
+
+git config --global -e
+muestra fichero que podemos modificar pulsando "i" y para guardar :wq! salir sin guardar :q
+
+pwd
+#Arrancando el repositorio
+==========================================================================
+Usamos carpeta Proyecto-Git, entramos en ella
+#Creamos el repositorio sobre el proyecto
+git init
+#Genera directorio oculto .git 
+git status
+#No se han guardado, podemos hacer commit de manera individual o colectiva
+git add divisiones.txt
+git status
+
+#está añadido pero no commiteado. Se hace commit pasando una descripción
+git commit -m "Fichero de divisiones"
+
+#añadimos todos los archivos
+git add .
+git status
+git commit -m "Fichero suma, resta y multiplicación"
+
+######Ejercicio
+#Crear fichero matematicas.txt y escribimos en el. Subirlo al repositorio
+git status
+git add matematicas.txt
+git status
+git commit -m "Fichero de texto de matemáticas"
+
+
+#Para ver todos los commits que hemos ido haciendo con su autor, hora y descripción
+git log
+#Vemos un hash asociado a cada commit
+#El último indica la rama
+
+
+#Recuperando ficheros con Git
+#Cambiamos ficheros con modificaciones erroneas
+git checkout -- .
+
+#Corregir comentarios erroneos
+#Modificar archivo matematicas.txt
+git status => archivo midificado
+git add matematicas.txt
+git commit -m "Comentario erroneo"
+git log
+#Tenemos un comentario que no es correcto
+git commit --amend -m "Fichero de texto modificado"
+git log
+
+#Revertir commits
+=======================================
+Creamos fichero readme.txt con texto
+git add readme.txt
+git commit -m "Commit a revertir"
+git log
+#quiero echar el commit para atrás para añadir más info
+git reset --soft HEAD^
+#soft apunta al último commit que hemos hecho
+git log
+#El fichero no ha perdido los cambios puedo seguir editando y volverlo a subir y commit
+git add readme.txt
+git commit -m "Ultimas funcionalidades añadidas"
+
+
+
+#Añadir ficheros con extensión
+============================================================================
++ Creamos nueva carpeta scripts 
++ metemos todos los ficheros .py en ella, 
++ creamos un nuevo fichero llamado fichero.txt dentro de la carpeta scripts
++ modificamos los ficheros txt de /
+
+git status
+
+git add scripts/
+
+#Ahora el fichero fichero.txt no nos interesa commitearlo
+git reset scripts/ignore.txt
+git status
+git commit -m "Scripts con operaciones matemáticas"
+git log
+
+
+#Añadimos sol
+git statuso ficheros con una extension
+git add *.txt
+#Solo añade los ficheros .txt del directorio en el que nos encontramos
+git reset *.txt 
+
+#Se ha revertido todo
+git status
+
+#Ahora añadimos todos los que tengan .txt no solo los del directorio donde estamos
+git add "*.txt"
+git status
+git commit -m "Todos los ficheros .txt"
+
+
+
+
+#Revision de log y status avanzado
+============================================================================
+git log --oneline
+
+#all: muestra todos
+#decorate y graph nos ayudaran cuando tengamos ramas
+git log --oneline --decorate --all --graph
+
+#Reducir info de git status
+git status -s
+D:Borrado
+M:Modificado
+R:REnombrado
+
+modificar fichero y añadirlo a stage
+
+#Muestra info de la rama
+git status -s -b
+
+
+#Creamos atajos para estos comandos
+#todo lo que va después del punto de alias es la abreviación y despues el comando al que sustituye asumiendo que todos empiezan por git
+git config --global alias.s "status -s -b"
+
+git config --global -e
+
+git config --global alias.l "log --oneline --decorate --all --graph"
+
+#Se puede personalizar cualquier comando
+
+
+# Ver diferencias entre lo que tenemos en local y lo que está commiteado y echar un cambio a una versión previa
+===============================================================================================================
+#Modificamos fichero de matematicas.txt
+git s
+
+#Para ver las diferencias
+git diff
+#Se puede ver en rojo lo que se ha eliminado y en verde lo añadido
+add y commit
+git l
+#Ahora quiero eliminar el commit
+git reset --soft HEAD^
+git l
+git s
+#Ahora lo quito del stage
+git reset matematicas.txt
+git s
+
+#Ahora quiero volver lo que estaba subido inicialmente 
+git checkout -- matematicas.txt
+#Ya no aparece como modificado el archivo de matemáticas.txt
+git diff
+
+
+#Eliminar ficheros
+============================================================
+#actualizamos
+git add -u 
+git s
+git commit -m "Eliminados ficheros"
+
+#Creamos fichero eliminado.txt metemos info y ahora add y commit
+#Lo eliminamos desde git
+git rm eliminado.txt
+git s
+#Ahora tengo que hacer commit para eliminarlo
+git commit -m "Fichero eliminado desde git"
+
+
+#Cambiar nombres de ficheros
+============================================================
+#De maner local
+#Renombrar matematicas.txt a fichero_matematicas.txt 
+git s
+git add -u
+git s
+git add -fichero_matematicas.txt
+git s
+#Aparece con R
+git commit -m "Renombrado"
+git s
+
+#Desde git
+git help mv
+git mv fichero_matematicas.txt matematicas_new.txt 
+git s
+#Vemos que lo marca con R
+git commit -m "Renombramiento del archivo"
+#Se ve como localmente también lo ha cambiado
+
+#Mover ficheros
+============================================================
+#movemos el archivo de matematicas_new.txt a scripts
+git mv matematicas_new.txt scripts
+git s
+git commit -m "Fichero movido al directorio scripts"
+
+#si queremos mover y renombramos al mismo tiempo
+git mv matematicas_new.txt scripts/matematicas_new2.txt
+
+#Si se hace de manera local (lo pasamos manualmente al directorio principal)
+git s
+git add -u
+git s
+#Aparece como eliminado
+#si hacemos git add
+git add matematicas_new2.txt
+git s
+#nos muestra como fichero renombrado
+git commit -m "Movimiento de un archivo"
+git l
+
+
+#Ignorar archivos con git
+creamos ficheros test1.ignore y test2.ignore  es el que vamos a ignorar
+git s
+creamos fichero .gitignore (oculto) editamos este fichero y añadimos
+test1.ignore
+test2.ignore
+
+git s
+
+#o también
+*.ignore
+
+añadimos ahora tambien .gitignore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
