@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio de Tablas</title>
+    <style type="text/css">
+        table, td, th { border:1px  solid black; }
+        #table { border-spacing:10px; }
+        #table { border-collapse:collapse; }
+        #td { padding:10px; }
+        #td, th { padding:5px; }
+        table { width:60%; color: black}
+        thead { color: white; background-color: grey;} 
+        tbody { color:black; } 
+        tfoot { color:maroon; }
+    </style>
+  </head>
+  <body>
+
+    <h1>MUPPETS</h1>
+    <p>Grupo de muñecotes urticantes. Delincuentes internacionales</p>
+    <img src="muppets.jpg" alt="Muppets">
+    <h3 p style="color: gray">Estos peluches son</h3>
+
+	<ul>
+		<li>Gustavo</li>
+		<li>Pegui</li>
+        <li>Gonso</li>
+        <li>Elmo</li>
+        <li>Animal</li>
+        <li>Coco</li>
+	</ul>
+
+    <h3 p style="color: gray">Delitos cometidos</h3>
+
+    <table>
+		<caption>Por orden de gravedad</caption>
+		<thead>
+			<tr>
+				<th>Año</th>
+				<th>Titulo</th>
+				<th>Delincuente</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td colspan="2">Delincuente mas fichado</td>
+				<td>Coco</td>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>1985</td>
+				<td>Un murcielago, dos murcielagos...</td>
+				<td>Dracula</td>
+			</tr>
+			<tr>
+				<td>1981</td>
+				<td>Me gustan las galletas</td>
+				<td>Coco</td>
+			</tr>
+			<tr>
+				<td>1983</td>
+				<td>Vamos a la charca</td>
+				<td>Pegui</td>
+			</tr>
+            <tr>
+				<td>1982</td>
+				<td>Cerca y lejos</td>
+				<td>Coco</td>
+			</tr>
+            <tr>
+				<td>1982</td>
+				<td>Un cerdo, dos cerdos...</td>
+				<td>Dracula</td>
+			</tr>
+            <tr>
+				<td>1983</td>
+				<td>Croando juntos</td>
+				<td>Gustavo</td>
+			</tr>
+            <tr>
+				<td>1986</td>
+				<td>Arriba y abajo</td>
+				<td>Coco</td>
+			</tr>
+		<tbody>
+	</table>
+
+    <h3 p style="color: gray">Sitio web oficial</h3>
+
+    <p>
+		<a href="https://muppets.disney.com/" 
+		target="_blank">Los muppets</a>
+	</p>
+
+
+
+
+  </body>
+</html>

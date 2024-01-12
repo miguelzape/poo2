@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejercicio con divs</title>
+<link rel="stylesheet" href="estilos-divs.css">
+<script type="text/javascript">
+	function closeSession() {
+		alert("Adios!!")
+		loadPage("cierre_sesion.html")
+	}
+	function loadPage(page) {
+		document.getElementById("contenido").innerHTML = '<object type="text/html" height="650px" width="100%" data="'+page+'"></object>';
+	}
+</script>
+</head>
+<body class="fondo">
+	<div id="contenedor">
+		<div id="cabecera">
+			<div id="cabecera_titulo">
+				<H1 style="text-align: center">Música y Recetas</H1>
+			</div>
+			<div id="cabecera_botones">
+				<a href="#" onclick="closeSession()"><img src="images/cerrar_sesion.png" title="Cerrar sesión" width="90" height="45"></a>
+			</div>
+		</div>
+		<div id="columnas">
+			<div id="menu">
+				<ul>
+					<li onclick="loadPage('Listas_Recetas/recetas.html');">
+						<a href="#">Receta</a> 
+					</li>
+					<li>
+						<a href="#" onclick="loadPage('../3.Links_Tablas/Ejercicio4_Tablas_GrupoMusica/Queen.html');">Grupo Música</a>
+					</li>
+				</ul>
+			</div>
+			<div id="contenido">
+				<h1>Titulo</h1>
+				<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
+				<img
+					src="../3.Links_Tablas/image/html-lenguaje-de-marcado-de-hipertexto.jpg"
+					alt="Html">
+				
+			</div>
+		</div>
+		<div id="pie">
+			<p>
+				©<a href="https://cftic.centrosdeformacion.empleo.madrid.org/" target="_blank">CFTIC</a> 2024
+			</p>
+		</div>
+
+	</div>
+</body>
+</html>

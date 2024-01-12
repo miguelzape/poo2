@@ -8,6 +8,7 @@
         
         <class>es.curso.java.hibernate.miPrimerHibernate.entities.Usuario</class>
         <class>es.curso.java.hibernate.delprofesor.entity.UserEntity</class>
+        <class>proyectoFinal.User</class>
         
         
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
