@@ -35,24 +35,11 @@ public class Principal {
 		
 	
 		for (User u: udao.getUsers()) {
-			System.out.println(u);
+			System.out.println(u.getIdUsuario());
 		}
 		
-		System.out.printf(EnumColor.BLUE_BRIGHT.toString() + 
-				"Existe el usuario user = %b",udao.existUsuario("user"));
-		System.out.printf("Existe el usuario paco = %b",udao.existUsuario("paco"));
-		System.out.printf("Existe el usuario user2 = %b",udao.existUsuario("user2"));
-		System.out.printf("Existe el usuario leon = %b",udao.existUsuario("leon"));
-		
-		long respuesta = udao.validarUser("user","clave");
-		
-		System.out.printf(EnumColor.MAGENTA.toString() + "Id con user + clave = %d",respuesta);
-		System.out.printf("Id con kk + p2 = %d",udao.validarUser("kk","p2"));
-		
-	
-		
-		
-	
+		//boolean r1 = udao.existUsuario("paco");
+		//long r2 = udao.validarUser("user","clave");
 		
 		udao.close();
 	}

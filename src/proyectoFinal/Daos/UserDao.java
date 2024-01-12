@@ -2,6 +2,7 @@ package proyectoFinal.Daos;
 
 
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -45,8 +46,7 @@ public class UserDao {
 	 */
 	public long validarUser (String usuario, String clave){
 		List<User> users;
-		
-		byte[] clave2= clave.getBytes();
+	
 		
 		TypedQuery<User> query = em.createQuery("from User c where c.usuario=?1", User.class);
 		query.setParameter(1, usuario);
@@ -56,7 +56,9 @@ public class UserDao {
 			return -1;
 		}
 		for (User u : users) {
-			if (u.getClave() == clave2) return u.getIdUsuario();
+			if (Arrays.equals(u.getClave(),clave.getBytes())) { 
+				return u.getIdUsuario();
+			}
 		}
 		return -1L;
 	}
