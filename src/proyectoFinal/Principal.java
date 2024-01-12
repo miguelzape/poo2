@@ -22,7 +22,7 @@ public class Principal {
 		UserDao udao= new UserDao();
 		
 		Rol admin=new Rol("Administrador");
-		Rol oper=new Rol("Operator");
+		Rol oper=new Rol("Operador");
 		
 		
 		User u1 = new User("user","clave","nombre","apellidos","dni","V","user@dominio.es",
