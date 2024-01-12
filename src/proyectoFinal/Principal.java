@@ -1,9 +1,11 @@
 package proyectoFinal;
 
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import proyectoFinal.Daos.UserDao;
+import proyectoFinal.entities.Rol;
+import proyectoFinal.entities.User;
 import utils.EnumColor;
 
 public class Principal {
@@ -18,8 +20,15 @@ public class Principal {
 	public void hacerTodo() {
 		
 		UserDao udao= new UserDao();
-		User u1 = new User("user","clave","nombre","apellidos","dni","V","user@dominio.es",916050000,new Date());
-		User u2 = new User("user2","clave2","nombre2","apellidos2","dni2","V","user2@dominio.es",916050002,new Date());
+		
+		Rol admin=new Rol("Administrador");
+		Rol oper=new Rol("Operator");
+		
+		
+		User u1 = new User("user","clave","nombre","apellidos","dni","V","user@dominio.es",
+				916050000,new Date(),Arrays.asList(admin));
+		User u2 = new User("user2","clave2","nombre2","apellidos2","dni2","V","user2@dominio.es",
+				916050002,new Date(),Arrays.asList(oper));
 		
 		udao.putUser(u1);
 		udao.putUser(u2);
@@ -43,11 +52,7 @@ public class Principal {
 	
 		
 		
-		
-		
-		
-		
-		
+	
 		
 		udao.close();
 	}

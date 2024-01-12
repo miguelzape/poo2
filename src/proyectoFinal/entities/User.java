@@ -1,16 +1,21 @@
-package proyectoFinal;
+package proyectoFinal.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
-import org.hibernate.annotations.ColumnTransformer;
-
+import es.curso.java.hibernate.relations.unomuchos.entities.Libro;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -27,8 +32,7 @@ public class User implements Serializable{
 	
 	@Column(length = 20, nullable=false) 
 	private String usuario;
-	@Column(name = "CLAVE",length = 12, nullable=false) 
-	//@ColumnTransformer(write = "ENCRYPTBYPASSPHRASE('At1g8IMp9',?)", read = "DECRYPTBYPASSPHRASE('At1g8IMp9',CLAVE)")
+	@Column(length = 12, nullable=false) 
 	private byte[] clave;
 	@Column(length = 20) 
 	private String nombre;
@@ -43,6 +47,11 @@ public class User implements Serializable{
 	private Date nacimiento;
 	
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="idPersona")
+	private List<Rol> roles = new ArrayList<Rol>();
+	
+	
 	//Constructor vacio
 	public User() {
 		super();
@@ -50,7 +59,7 @@ public class User implements Serializable{
 	
 	//Constructor con todos los parametros
 	public User(String usuario, String clave, String nombre, String apellidos, String dni, String sexo, String email,
-			long telefono, Date nacimiento) {
+			long telefono, Date nacimiento,List<Rol> roles) {
 		super();
 		this.usuario = usuario;
 		this.clave = clave.getBytes();
@@ -61,11 +70,16 @@ public class User implements Serializable{
 		this.email = email;
 		this.telefono = telefono;
 		this.nacimiento = nacimiento;
+		this.roles = roles;
+	}
+	
+	// añadir un rol nuevo a la lista de roles
+	public void addRol(Rol rol) {
+		this.roles.add(rol);
 	}
 	
 	
-	
-	
+
 	//Metodos Get y Set
 	
 	
@@ -131,6 +145,15 @@ public class User implements Serializable{
 	public long getIdUsuario() {
 		return idUsuario;
 	}
+	
+	
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
 
 	//metodo toString
 	@Override
@@ -139,13 +162,6 @@ public class User implements Serializable{
 				+ ", nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", sexo=" + sexo + ", email="
 				+ email + ", telefono=" + telefono + ", nacimiento=" + nacimiento + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

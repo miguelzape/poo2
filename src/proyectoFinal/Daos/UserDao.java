@@ -7,7 +7,7 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import proyectoFinal.User;
+import proyectoFinal.entities.User;
 import utils.JpaUtil;
 
 public class UserDao {
