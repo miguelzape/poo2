@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+	<meta charset="utf-8">
+	<title>Calculadora</title>
+	<script type="text/javascript">
+	
+		function guardarOperando(accion){
+			operador = document.getElementById("numero").value;
+			operacion=accion;
+		}
+
+		function hacerCuenta(){
+			if (operador == 1) {resultado=operador + document.getElementById("numero").value};
+			if (operador == 2) {resultado=operador - document.getElementById("numero").value};
+
+			if (operador == 4) {resultado=operador / document.getElementById("numero").value};
+		}
+
+		function sumar(){
+			resultado = document.getElementById("numero1").value + document.getElementById("numero2").value;
+			document.getElementById("result").value=resultado
+		}
+
+	</script>
+</head>
+
+<body>
+	</fieldset>
+	<p>Calculadora</p>
+	</fieldset>
+	<br>
+	<fieldset width:60%;>
+		<form>
+
+			<p>Operador 1: <input type="number" id="numero1" value="0" min="0" max="1000000"></p>
+			<p>Operador 2: <input type="number" id="numero2" value="0" min="0" max="1000000"></p>
+
+				<br>
+				<div>
+					<input type="button" value="+" onclick="sumar()">
+					<input type="button" value="-" onclick="restar()">
+					<input type="button" value="x" onclick="multiplicar()">
+					<input type="button" value="/" onclick="dividir()">
+					<br>
+					<br>
+					
+				</div>
+				<br>
+			<p>Resultado: <input type="number" id="resul" readonly></p>
+
+		</form>
+	</fieldset>
+
+</body>
+
+</html>

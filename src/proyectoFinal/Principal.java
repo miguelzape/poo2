@@ -38,8 +38,8 @@ public class Principal {
 			System.out.println(u.getIdUsuario());
 		}
 		
-		//boolean r1 = udao.existUsuario("paco");
-		//long r2 = udao.validarUser("user","clave");
+		boolean r1 = udao.existUsuario("paco");
+		long r2 = udao.validarUser("user","clave");
 		
 		udao.close();
 	}

@@ -48,7 +48,7 @@ public class User implements Serializable{
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name="idPersona")
+    @JoinColumn(name="idUser")
 	private List<Rol> roles = new ArrayList<Rol>();
 	
 	
@@ -158,7 +158,7 @@ public class User implements Serializable{
 	//metodo toString
 	@Override
 	public String toString() {
-		return "User [idUsuario=" + idUsuario + ", usuario=" + usuario + ", clave=" + Arrays.toString(clave)
+		return "User [idUsuario=" + idUsuario + ", usuario=" + usuario + ", clave=" + new String(clave)
 				+ ", nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", sexo=" + sexo + ", email="
 				+ email + ", telefono=" + telefono + ", nacimiento=" + nacimiento + "]";
 	}

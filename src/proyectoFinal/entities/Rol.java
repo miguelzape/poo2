@@ -20,7 +20,7 @@ public class Rol implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long idRol;
 	
-	private User user;
+	//private User user;
 	private String tipo;
 	
 	
@@ -35,12 +35,12 @@ public class Rol implements Serializable{
 	}
 	
 	//metodos Get y Set
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 	public String getTipo() {
 		return tipo;
 	}
@@ -53,8 +53,10 @@ public class Rol implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Rol [idRol=" + idRol + ", user=" + user + ", tipo=" + tipo + "]";
+		return "Rol [idRol=" + idRol + ", tipo=" + tipo + "]";
 	}
+	
+	
 	
 	
 }
