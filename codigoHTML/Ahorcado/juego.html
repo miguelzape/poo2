@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+	<meta charset="utf-8">
+	<title>Juego del ahorcado</title>
+	<script type="text/javascript">
+		
+	    let palabra;
+	    let acertadas = 0;
+	    
+	    function cogerPalabra(){
+			palabra = prompt("Escriba una palabra de 5 letras");
+			reiniciar();
+		}
+
+		function probar() {
+			caracter = document.getElementById("letra").value;
+			if (probarSimple(caracter, 0)) document.getElementById("r1").value = caracter;
+			if (probarSimple(caracter, 1)) document.getElementById("r2").value = caracter;
+			if (probarSimple(caracter, 2)) document.getElementById("r3").value = caracter;
+			if (probarSimple(caracter, 3)) document.getElementById("r4").value = caracter;
+			if (probarSimple(caracter, 4)) document.getElementById("r5").value = caracter;
+		}
+		
+		function reiniciar(){
+			document.getElementById("r1").value="";
+			document.getElementById("r2").value="";
+			document.getElementById("r3").value="";
+			document.getElementById("r4").value="";
+			document.getElementById("r5").value="";
+		}
+		
+		function probarSimple(caracter, posicion) {
+			//alert("comparando " + caracter + " en posicion " + posicion);
+			return (palabra.charAt(posicion) == caracter);
+		}
+	</script>
+</head>
+
+<body onload="cogerPalabra()">
+	<h1>AHORACO</h1> <br>
+	<hr>
+	<input type="text" readonly id="r1" name="r1" maxlength="1" size="2">
+	<input type="text" readonly id="r2" name="r2" maxlength="1" size="2">
+	<input type="text" readonly id="r3" name="r3" maxlength="1" size="2">
+	<input type="text" readonly id="r4" name="r4" maxlength="1" size="2">
+	<input type="text" readonly id="r5" name="r5" maxlength="1" size="2">
+	<br><br>
+
+	<form action="" method="post">
+		<!--		Letra: <input type="text" required="true" name="letra" placeholder="Introduce tu nombre"-->
+		<!--			size="20" maxlength="10">-->
+
+		Letra: <input type="text" id="letra" required="true" name="letra" size="3" maxlength="1">
+		<input type="button" value="Pulsar" onclick="probar()">
+
+
+		<br><br>
+		<button type="reset" onclick="reiniciar();">Reiniciar</button>
+		<br><br>
+		<label name"mensaje1">uno</label>
+		<br><br>
+		<label name"mensaje2">dos</label>
+
+	</form>
+</body>
+
+</html>

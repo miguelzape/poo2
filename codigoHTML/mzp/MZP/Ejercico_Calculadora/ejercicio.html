@@ -4,10 +4,34 @@
 <head>
 	<meta charset="utf-8">
 	<title>Calculadora</title>
+	<style>
+		#superior {
+		background-color: #999;
+		height: 50px;
+		padding: 20px;
+		width: 250px;
+		}
+		
+		#centro {
+		background-color: #999;
+		height: 200px;
+		padding: 20px;
+		width: 250px;
+		}
+		
+		#inferior {
+		background-color: #999;
+		height: 50px;
+		padding: 20px;
+		width: 250px;
+		}
+	
+		
+	</style>
 	<script type="text/javascript">
 	
 		function guardarOperando(accion){
-			operador = document.getElementById("numero").value;
+			operador = document.getElementById("numero").value 
 			operacion=accion;
 		}
 
@@ -19,8 +43,9 @@
 		}
 
 		function sumar(){
-			resultado = document.getElementById("numero1").value + document.getElementById("numero2").value;
-			document.getElementById("result").value=resultado
+			resultado = Number(document.getElementById("numero1").value) +
+			   Number(document.getElementById("numero2").value)
+			document.getElementById("resul").value=resultado
 		}
 
 	</script>
@@ -45,8 +70,9 @@
 					<input type="button" value="/" onclick="dividir()">
 					<br>
 					<br>
-					
+						 
 				</div>
+				
 				<br>
 			<p>Resultado: <input type="number" id="resul" readonly></p>
 
