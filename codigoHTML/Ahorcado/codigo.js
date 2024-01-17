@@ -12,29 +12,30 @@ function probar() {
 	caracter = document.getElementById("letra").value;
 	anterior = aciertos;
 	coincidencia = false;
-	
-	for (var i=0;i<5;i++){
-		probarSimple(caracter, i, "r"+(i+1));	
+	for (var i = 0; i < 5; i++) {
+		probarSimple(caracter, i, "r" + (i + 1));
 	}
-//	probarSimple(caracter, 0, "r1");
-//	probarSimple(caracter, 1, "r2");
-//	probarSimple(caracter, 2, "r3");
-//	probarSimple(caracter, 3, "r4");
-//	probarSimple(caracter, 4, "r5");
-
 	if (!coincidencia) {
-		fallos = fallos + 1;
+
+		fallos++;
 		intentos = 5 - fallos;
 		document.getElementById('mensaje2').innerHTML = intentos;
+		mensaje1("MAL");
+		cambiarDibujo(fallos);
+	}
+	else {
+		mensaje1("BIEN");
 	}
 	if (fallos >= 5) {
-		document.getElementById("mensaje1").innerHTML = "HAS PERDIDO";
+		mensaje1("HAS PERDIDO");
+		fallos = 5;
 	}
 	else if (aciertos >= 5) {
-		document.getElementById("mensaje1").innerHTML = "HAS GANADO";
+		mensaje1("HAS GANADO");
 	}
-	caracter = document.getElementById("letra").value="";
+	caracter = document.getElementById("letra").value = "";
 	caracter = document.getElementById("letra").focus();
+
 }
 
 function probarSimple(caracter, posicion, controlName) {
@@ -51,6 +52,14 @@ function probarSimple(caracter, posicion, controlName) {
 	}
 }
 
+function cambiarDibujo(numero) {
+	document.getElementById("dibujo").innerHTML = '<object type="image/jpg" data="./dibujos/' + numero + '.png"></object>';
+}
+
+function mensaje1(texto){
+	document.getElementById("mensaje1").innerHTML = texto;
+}
+
 function reiniciar() {
 	aciertos = 0;
 	fallos = 0;
@@ -62,4 +71,5 @@ function reiniciar() {
 	document.getElementById("letra").value = "";
 	document.getElementById("mensaje1").innerHTML = "BIENVENIDO";
 	document.getElementById('mensaje2').innerHTML = "5";
+	cambiarDibujo(0);
 }
