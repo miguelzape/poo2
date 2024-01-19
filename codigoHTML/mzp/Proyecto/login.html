@@ -3,16 +3,38 @@
 <head>
 <meta charset="utf-8">
 <title>Login</title>
+
+<style>
+/*	body{
+            background-image: url(./img/fondoMath.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }  
+        legend, p{
+            color: rgb(248, 219, 183);
+        }
+        img{
+            width: 40px;
+        }      
+*/     
+       
+        fieldset{
+            background-color: cadetblue;
+            width: 20%;
+            border-radius: 3%;
+        }
+        
+</style>
+
 </head>
 <body>
 </fieldset>
-    <p>Para acceder a la web introduzca sus credenciales</p>
+    <h2>Introduzca sus credenciales</h2>
 </fieldset>
-<br>
-	<fieldset wide = 200>
+	<fieldset >
 	<form>
-		User: <input type="text"> <br> 
-		Password: <input type="password"> <br>
+		Usuario: <br><input type="text" required="true" maxlength="15"> <br> <br> 
+		Clave:<br> <input type="password" required="true" maxlength="15"> <br>
         <br>
 		<br> <input type="submit" value="Aceptar">
 	</form>

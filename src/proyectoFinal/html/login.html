@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-
 <head>
-	<meta charset="utf-8">
-	<title>Login</title>
-</head>
+<meta charset="utf-8">
+<title>Login</title>
 
+<style>
+/*	body{
+            background-image: url(./img/fondoMath.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }  
+        legend, p{
+            color: rgb(248, 219, 183);
+        }
+        img{
+            width: 40px;
+        }      
+*/     
+       
+        fieldset{
+            background-color: cadetblue;
+            width: 20%;
+            border-radius: 3%;
+        }
+        
+</style>
+
+</head>
 <body>
-	<p>Para acceder a la web introduzca sus credenciales</p>
-	<br>
+</fieldset>
+    <h2>Introduzca sus credenciales</h2>
+</fieldset>
+	<fieldset >
 	<form>
-		User: <input type="text"> <br><br>
-		Password: <input type="password"> <br>
-		<br>
+		Usuario: <br><input type="text" required="true" maxlength="15"> <br> <br> 
+		Clave:<br> <input type="password" required="true" maxlength="15"> <br>
+        <br>
 		<br> <input type="submit" value="Aceptar">
 	</form>
-	<a href="userdata.html">Crear un usuario nuevo</a>
+</fieldset>
+    <a href="userdata.html">Crear un usuario nuevo</a>
 </body>
-
 </html>

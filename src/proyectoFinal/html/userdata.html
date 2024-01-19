@@ -1,16 +1,61 @@
-<html>
-    
+<!DOCTYPE html>
+<html lang="es-ES">
 <head>
-    <title>Titulo de la página</title>
+<meta charset="utf-8">
+<title>Datos de usuario</title>
+
+<style>
+/*	body{
+            background-image: url(./img/fondoMath.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }  
+        legend, p{
+            color: rgb(248, 219, 183);
+        }
+        img{
+            width: 40px;
+        }      
+*/
+        
+        fieldset{
+            background-color: cadetblue;
+            width: 40%;
+            border-radius: 3%;
+        }
+        
+</style>
 
 </head>
-
-
 <body>
-    <H1>primera línea con letra MUY GRANDE</H1>
-    <H3>letra intermedia</H3>
-    <H6>última línea con letra MUY PEQUEÑA</H6>
+</fieldset>
+    <h1>Crear/Modificar usuario</h1>
+</fieldset>
+<br>
+	<fieldset >
+	<form>
+		
+<!--		Letra: <input type="text" id="letra" required="true" name="letra" size="3" maxlength="1" autofocus>-->
+<!--		<input type="button" value="Probar" onclick="probar()">-->
+<!--		<br><br>-->
+<!--		<button type="reset" onclick="reiniciar()">Reiniciar</button>-->
+		
+		
+		<p>Nombre: <input type="text" id="nombre" maxlength="30" size="30"> </p>
+		<p>Apellidos: <input type="text" id="apellidos" maxlength="30" size="30"> </p>
+		<p>Dni: <input type="text" id="apellidos" maxlength="9" size="10"> </p>
+		<p>Genero: <input type="text" id="genero" maxlength="1" size="2"> </p>
+		<p>Usuario: <input type="text" id="idusuario" required="true" maxlength="15"> </p>
+		<p>Contraseña: <input type="password" id="password" required="true" maxlength="15"> </p>
+		<p>Contraseña: <input type="password" id="password" required="true" maxlength="15"> verificación </p>
+		<p>E-mail: <input type="email" id="mail" maxlength="30" size="30"></p>
+		<p>Telefono: <input type="number"telefono" maxlength="9" size="9"></p>
+		<p>Fecha nacimiento: <input type="date" telefono" maxlength="9" size="9"></p>
+	
+        <br>
+		<br> <input type="submit" value="Aceptar">
+	</form>
+</fieldset>
     
 </body>
-
 </html>
