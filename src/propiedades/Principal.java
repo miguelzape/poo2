@@ -38,11 +38,11 @@ public class Principal {
 	        System.out.println("el precio de todos los tornillos es: "+suma);
 	        
 	        
-//	        List<EnumTornillo> prueba= new ArrayList<EnumTornillo>();
-//	        prueba = Arrays.asList(EnumTornillo.values());
+	        List<EnumTornillo> prueba= new ArrayList<EnumTornillo>();
+	        prueba = Arrays.asList(EnumTornillo.values());
 	        
-//	        double total=0;
-//	        prueba.forEach(t -> total += t.getPrecio());
+	        double total=0.0;
+	        prueba.forEach(t -> {total += t.getPrecio();});
         
 	        
 	        

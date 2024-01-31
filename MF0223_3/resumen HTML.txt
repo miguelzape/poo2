@@ -1,0 +1,244 @@
+	***************************************
+	**			            			 **
+	**	       H T M L		  		     **
+	**				    				 **
+	***************************************
+
+
+Siempre es esa forma: <etiqueta> contenido </etiqueta>
+
+lista de etiquetas HTML
+
+    Etiqueta HTML <h1>: Encabezado o título principal.
+    Etiqueta HTML <h2>: Para elementos subtítulo.
+    Etiqueta HTML <p>: Para elementos de párrafo.
+    Etiqueta HTML <b>: Para hacer texto en negrita.
+    Etiqueta HTML <i>: Texto en cursiva.
+    Etiqueta HTML <ul>: Para listas sin ordenar
+    Etiqueta HTML <table>: para crear tablas.
+    Etiqueta HTML <form>: Para crear formularios.
+    Etiqueta HTML <a>: Para crear enlaces.
+    Etiqueta HTML <img>: Para insertar imágenes.
+
+    Etiqueta <br/>: Salto de linea
+    Etiqueta <hr/>: Linea separadora
+
+Lista de formatos y etiquetas de texto HTML
+
+    Etiqueta HTML <b>: Para texto en negrita.
+    Etiqueta HTML <em>: Para enfatizar texto.
+    Etiqueta HTML <i>: Para texto en cursiva.
+    Etiqueta HTML <u>: Para texto subrayado.
+    Etiqueta HTML <strong>: Para textos importantes.
+    Etiqueta HTML <big>: Texto grande.
+    Etiqueta HTML <small>: Para texto pequeño.
+    Etiqueta HTML <sub>: Para texto subíndice.
+    Etiqueta HTML <sup>: Para texto superíndice.
+    Etiqueta HTML <ins>: Para texto insertado.
+    Etiqueta HTML <del>: Para texto borrado.
+    Etiqueta HTML <mark>: Para texto marcado.
+
+Lista de los atributos más usados en HTML. Las etiquetas HTML pueden llevar estos atributos
+
+    Id =" ": Para identificar un elemento único.
+    class =" ": para Identificador de varios elementos.
+    style =" ": Para darle un estilo al elemento.
+	<p style="text-align: center;">Este es un párrafo alineado al centro.</p>
+    alt=" ": Proporciona un texto alternativo para elementos multimedia, como imágenes.
+	<img src="imagen.jpg" alt="Descripción de la imagen">
+    href =" ": Para establecer URL de destino de un enlaces.
+    height =" ": Para determinar altura.
+    width =" ": Para determinar ancho.
+    src=" ": Para especificar la fuente de imágenes.
+
+*** MAS DETALLES DE STYLE, con un ejemplo. Es similar a CSS ***
+<p style="font-size: 14px; font-family: Lato; color: #1d1778; background-color: yellow; padding: 12px; margin: 10px; width: 100px; border-style: dotted; border-color: #000000; border-width: 5px;"> Este es un párrafor con estilo, gracias al atributo style...</p>
+
+    font-size: tamaño de letra;
+    font-family: tipo de letra;
+    color: color de letra;
+    backgroun-color:color de fondo;
+    padding: relleno;
+    margin: margen;
+    width: ancho;
+    border-style: estilo de borde;
+    border-color: color de borde;
+    border-width: ancho de borde;
+
+
+Hipervinculos. Etiqueta <a>
+  
+    Sus atributos
+
+    	href: Para indicar la dirección destino del enlace
+		<a href="URL"> texto ancla </a>
+    	target: para que el enlace se habrá en una nueva ventana el atributo target toma el valor «_blank»
+		<a href="https://www.example.com/" target="_blank">Este enlace se abrirá en una nueva ventana</a>
+   	rel: para indicar la relación que existe entre la página del cual sale el enlace y la página que recibe el enlace
+		No lo hemos usado nunca
+
+Imagenes. Etiqueta <img/>
+
+     Sus atributos
+
+	src: Para indicar la ubicación o dirección de la imagen
+		<img src="URL o nombre del archivo"/>
+		<img src="koala.jpg"/>
+		<img src="https://cdn.pixabay.com/photo/2015/02/09/20/03/koala-630117__340.jpg"/>
+	alt: texto alternativo, este texto se mostrará si por alguna razón no carga la imagen.
+		<img src="gatito.jpg" alt="foto de gatito"/>
+	width: Ancho de imagen
+	height: Alto de imagen
+		<img src="koala.jpg" height="50px" width="150px"/>
+		<img src="koala.jpg" height="50%" width="150%"/>
+	vspce:	colocar espacio superio e inferior. se puede expresar en píxeles u otra unidad como em, %, pt, etc.
+	border: para poner un marco en la imagen
+		<img src="koala.jpg" border="10px" height="250px" width="400px"/>
+
+Listas
+	ol: listas ordenadas (numeradas)
+	ul: listas desordenadas (sin numerar)
+	il: elemento de la lista
+
+	atributo list-style-type de ul.  indica el simbolo que se pone delante de cada elemento
+
+	<ul style= "list-style-type: circle;">	Circulos vacios
+	<ul style= "list-style-type: square;">	Cuadrados solidos
+	<ul style= "list-style-type: upper-roman;">	Numeros romanos
+	<ul style= "list-style-type: lower-greek;">	Letras griegas
+	<ul style="list-style-image:url(dibujo.png);"> Una imagen que adjuntemos o por url
+
+		<ul>
+  		<li>América</li>
+ 		 <ol>
+  		   <li>América central</li>
+		     <li>América sur</li>
+		     <li>América norte</li>
+		  </ol>
+		  <li>África</li>
+		  <ol>
+		    <li>África Septentrional</li>
+		    <li>África Occidental</li>
+		    <li>África Central</li>
+		    <li>África Oriental</li>
+		    <li>África Meridional</li>
+		  </ol>
+		  <li>Antártida</li>
+		</ul>
+
+Lista de terminologías o lista de definiciones 
+
+
+    ETIQUETA <dl>.- Esta etiqueta se utiliza para crear una lista de definiciones si lo deseamos.
+    ETIQUETA <dt>.- Esta etiqueta contiene el término que queremos definir.
+    ETIQUETA <dd>.- Esta etiqueta contiene la definición del término que le precede.
+
+		<dl><dt>Mamifero</dt><dd> Especie de animales que maman</dd></dl>
+		<dl><dt>Vertebrado</dt><dd> Especie de animales que poseen huesos</dd></dl>
+		<dl><dt>Reptil</dt><dd> Especie de animales que se arrastran por el suelo</dd></dl>
+
+Tablas
+	Etiqueta <table>: tabla
+	atributo border: añade un borde a la tabla, que por defecto no tiene.
+	<table border="1px"> 
+		Etiqueta <tr>:fila (row)
+			Etiqueta <td>: columna NORMAL dentro de la fila.
+			Etiqueta <th>: columna IMPORTANTE dentro de la fila. se usa para encabezado (header)
+			Atributo colspan y rowspan: extiende (o combina) la columna o fila el numero de casillas indicado
+			<td rowspan="2"> ELEMENTO </td>
+			<td colspan="2"> ELEMENTO </td>
+
+	Etiquetas <thead>, <tbody> y <tfood> para tablas 
+			<thead bgcolor="#88b1f7" height ="40px">
+			<tr>
+				<td colspan="6"> MI HORARIO DE CLASES </td>
+			</tr>
+  			</thead>
+
+			<tfoot bgcolor="#88b1f7">
+   			 <tr>
+				<td colspan="6"> Horario verano del 5to B  </td>
+			</tr>
+ 			</tfoot>
+
+Formularios
+	Etiqueta <form>: tabla
+	Atributo action: será la URL de la página a la que se envia el formulario
+	Atributo method: puede tomar como valores a GET o POST. y esto indica el método http que será utilizado.
+	Atributo name: le pone nombre al formulario. Necesario cuando hay mas de un formulario en la misma pagina
+	Atributo onsubmit: ejecuta funcion de validacion antes del summit. [onsummit="return validarForm()"]
+			   con el return, solo envia formulario si validarForm devuelte true.
+			   sin el return, envia el formulario despues del 'validarForm'. Sin inportar que devuelve
+			
+	Etiqueta <input>: campos del formulario
+	ver:          https://developer.mozilla.org/es/docs/Web/HTML/Element/Input
+	Atributo type: especifica el tipo de dato de entrada
+   		Text: para campos de texto
+			<input type="text" value="" placeholder="textom">: 
+				placeholder muestra el 'textom' en la casilla para indicar su uso
+				value pone un valor en la casilla. en este caso lo borra.
+				tabindex="1" establece el orden de tabulacion de cada control
+    		Password: para campos de contraseña
+				<input type="password"/>	
+    		Checkbox: para casillas de verificación
+    		Radio: para casillas de selección
+    		Submit: para botones de envío
+    		Reset: para botones de resetear
+    		File: para campos de selección de archivo
+		tel: para telefono
+	Etiqueta <select>: Crear una desplegable con opciones
+	Atributo size.- Utiliza el atributo size para determinar la cantidad de opciones a mostrar y su valor en números.
+	Atributo multiple.- el atributo multiple permite seleccion multiple de opciones 
+
+		Etiqueta <option>: Opciones del desplegable
+
+	    <form>
+		ELIGE UN COLOR:<select>
+			<option>Blanco</option>
+			<option>Negro</option>
+			<option>Azul</option>
+			<option>Rojo</option>
+			<option>Verde</option>
+		</select>
+	    </form>
+	Etiqueta <textarea>: Un campo de texto con varias lineas 
+		<textarea name="mensaje"> </textarea>
+
+
+	***************************************
+	**			             			 **
+	**        J A V A S C R I P T        **
+	**				    				 **
+	***************************************
+
+
+let p1 = document.forms["formulario1"]["password"].value	recoge campo'password' del form 'formulario1'
+let p2 = document.getElementById("password").value	recoge campo'password' del unico form que exista.
+
+alert("mensaje")   muestra mensaje en una ventana
+
+
+
+	***************************************
+	**			             			 **
+	**           J Q U E R Y             **
+	**				    				 **
+	***************************************
+	
+	<script scr="direccion de jquery"></script>
+	<script>
+		$(documennt).ready(function(){
+			$('#guardar').submit(funtion(){
+				alert("testo")
+			});
+		});
+	</script>
+
+
+  
+
+	
+
+
+
+
