@@ -102,11 +102,11 @@ Listas
 
 	atributo list-style-type de ul.  indica el simbolo que se pone delante de cada elemento
 
-	<ul style= "list-style-type: circle;">	Circulos vacios
-	<ul style= "list-style-type: square;">	Cuadrados solidos
-	<ul style= "list-style-type: upper-roman;">	Numeros romanos
-	<ul style= "list-style-type: lower-greek;">	Letras griegas
-	<ul style="list-style-image:url(dibujo.png);"> Una imagen que adjuntemos o por url
+	<ul style= "list-style-type: circle">	Circulos vacios
+	<ul style= "list-style-type: square">	Cuadrados solidos
+	<ul style= "list-style-type: upper-roman">	Numeros romanos
+	<ul style= "list-style-type: lower-greek">	Letras griegas
+	<ul style="list-style-image:url(dibujo.png)"> Una imagen que adjuntemos o por url
 
 		<ul>
   		<li>América</li>
@@ -233,7 +233,51 @@ alert("mensaje")   muestra mensaje en una ventana
 			});
 		});
 	</script>
+	
+	
+	***************************************
+	**			             			 **
+	**  Java Server Page   J S P         **
+	**				    				 **
+	***************************************
 
+
+	poner esta dependencia en el pom.xml de Maiven
+	
+	<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+	</dependency>
+	
+	
+	desde el menu new, crear un JSP file
+	
+	<%  %> todo lo que se escriba aqui dentro es codigo java
+	
+	<body>
+	<% for (int i=1;i<10;i++) { %>
+	<p> esto es una prueba de jsp </p>
+	<% } %>
+	</body>
+	
+	para importar librerias, no funcina crt+shitf+o.  Hay que escribir esto en la cabecara
+	
+	import="java.util.List, java.util.ArrayList"
+	
+	queda asi
+	
+	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="java.util.List, java.util.ArrayList"%>
+	
+	
+	
+	
+	
+	
+	
+	
 
   
 

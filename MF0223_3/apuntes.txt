@@ -300,3 +300,17 @@ en la ruta ‘/etc/netplan’ hay un fichero llamado ‘00-installer-config-yaml
 escribiendo ‘whereis neplan’ nos da las rutas donde hay algo con ese nombre
 
 Existe un programa llamado 'ConEmu' que sirve para sustituir la consola o shell de windows.
+
+
+CONTESTAR ANTES DEL 20 FEBRERO EN ESTA DIRECCION
+
+pctg@cas-training.com
+asunto; CV + nombre y apellidos + 23/1613
+
+	si python o no python
+	enviar curriculum en word
+
+
+request.getSession().getId();
+
+https://barcelonageeks.com/las-50-mejores-ideas-de-proyectos-java-para-principiantes-y-avanzados/
